@@ -1,22 +1,36 @@
 
 .footer {
-    background: #222;
+    margin-top: 80px;
+    background: #727171;
     color: white;
-    padding: 20px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .footer-content {
+    margin-top: 10%S;
     display: flex;
     justify-content: space-between;
 }
 
 .social-links a {
-    display: block;
-    color: white;
+    display: flex;
+    gap: 20px;
+    display: inline;
+    color: rgb(16, 16, 16);
     text-decoration: none;
     margin: 5px 0;
+    padding-top: 10px;
 }
 
 .social-links a:hover {
-    color: orange;
+    color: rgb(29, 143, 251);
+}
+.item {
+    padding-left: 10px;
+    
 }

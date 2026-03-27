@@ -24,9 +24,9 @@ const Footer = () => {
                 <div className='footer-content-right'>
                     <h4>Réseaux sociaux</h4>
                     <div className="social-links">
-                        <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
-                        <a href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a>
-                        <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className='item'><FaFacebook />Facebook</a>
+                        <a href="https://youtube.com" target="_blank" rel="noreferrer" className='item'><FaYoutube />YouTube</a>
+                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className='item'><FaInstagram />Instagram</a>
                     </div>
                 </div>
 
