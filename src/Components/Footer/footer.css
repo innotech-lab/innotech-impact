@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root{
   --bg:#171618;
   --panel:#252426;
@@ -154,4 +155,72 @@
     text-align:center;
   }
 
+=======
+.footer {
+    margin-top: 80px;
+    background: #727171;
+    color: white;
+    padding: 30px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* CONTENU */
+.footer-content {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* IMPORTANT pour mobile */
+    gap: 20px;
+}
+
+/* LIENS SOCIAUX */
+.social-links a {
+    display: inline-block; /* corrige le conflit */
+    margin: 5px 10px 5px 0;
+    color: rgb(16, 16, 16);
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: rgb(29, 143, 251);
+}
+
+.item {
+    padding-left: 10px;
+}
+
+/* 🔥 RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* empile les éléments */
+        text-align: center;
+    }
+
+    .item {
+        padding-left: 0;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* 🔥 TRÈS PETITS ÉCRANS */
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px;
+    }
+
+    .footer-content {
+        gap: 10px;
+    }
+
+    .social-links a {
+        margin: 5px;
+        font-size: 14px;
+    }
+>>>>>>> a597f90d3d29682184887805a40f51c60e68a4a6
 }
