@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 import React from "react";
 import "./footer.css";
-import Logor from "../../assets/Logor.png";b
+import Logor from "../../assets/Logor.png";
 import { FaFacebookF, FaInstagram, FaYoutube, FaPhone, FaMapMarkerAlt, FaCrosshairs } from "react-icons/fa";
 
 const Footer = () => {
@@ -19,7 +18,7 @@ const Footer = () => {
 
         {/* Brand */}
         <div className="pms-block pms-brand">
-          <img src={Logor} alt="" className="pms-logo" />
+          <img src={Logor} alt="Logo" className="pms-logo" />
           <p className="pms-desc">
             Learn music with passion and professionalism. Lessons for all ages.
           </p>
@@ -55,7 +54,7 @@ const Footer = () => {
           <h4>Contact</h4>
 
           <p className="contact-item">
-            <FaMapMarkerAlt />Kabondo, Bujumbura, Burundi
+            <FaMapMarkerAlt /> Kabondo, Bujumbura, Burundi
           </p>
 
           <p className="contact-item">
@@ -67,22 +66,9 @@ const Footer = () => {
           </p>
 
           <div className="pms-social">
-            <a href="#" className="social-facebook">
-              <FaFacebookF />
-            </a>
-
-            <a href="#" className="social-instagram">
-              <FaInstagram />
-            </a>
-
-            <a
-              href="https://www.youtube.com/@danny_bay"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-youtube"
-            >
-              <FaYoutube />
-            </a>
+            <a href="#" className="social-facebook"><FaFacebookF /></a>
+            <a href="#" className="social-instagram"><FaInstagram /></a>
+            <a href="https://www.youtube.com/@danny_bay" target="_blank" rel="noopener noreferrer" className="social-youtube"><FaYoutube /></a>
           </div>
         </div>
 
@@ -97,43 +83,3 @@ const Footer = () => {
 };
 
 export default Footer;
-=======
-import React from 'react'
-import './footer.css'
-import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa'
-
-const Footer = () => {
-    return (
-        <div className='footer' id='footer'>
-            <div className='footer-content'>
-
-                <div className='footer-content-left'>
-                    <h3>Mon Site</h3>
-                    <p>Suivez-nous sur les réseaux sociaux</p>
-                </div>
-
-                <div className='footer-content-center'>
-                    <h4>Liens utiles</h4>
-                    <ul>
-                        <li>Accueil</li>
-                        <li>À propos</li>
-                        <li>Contact</li>
-                    </ul>
-                </div>
-
-                <div className='footer-content-right'>
-                    <h4>Réseaux sociaux</h4>
-                    <div className="social-links">
-                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className='item'><FaFacebook />Facebook</a>
-                        <a href="https://youtube.com" target="_blank" rel="noreferrer" className='item'><FaYoutube />YouTube</a>
-                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className='item'><FaInstagram />Instagram</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    )
-}
-
-export default Footer
->>>>>>> a597f90d3d29682184887805a40f51c60e68a4a6
