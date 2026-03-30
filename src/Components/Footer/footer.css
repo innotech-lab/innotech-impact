@@ -1,0 +1,157 @@
+:root{
+  --bg:#171618;
+  --panel:#252426;
+  --text:#e9e6ef;
+  --muted:rgba(233,230,239,0.72);
+  --accent-lav:#CDB4DB;
+}
+
+/* Footer */
+
+.pms-footer{
+  background:#000;
+  color:var(--text);
+  padding:48px 16px 22px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.pms-inner{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:28px;
+}
+
+.pms-block{
+  flex:1 1 220px;
+  min-width:200px;
+}
+
+/* Logo */
+
+.pms-logo{
+  max-width:200px;
+  margin-bottom:12px;
+}
+
+.pms-desc{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* Links */
+
+.pms-list{
+  list-style:none;
+  padding:0;
+}
+
+.pms-list li{
+  margin:8px 0;
+}
+
+.pms-list a{
+  text-decoration:none;
+  color:var(--muted);
+}
+
+.pms-list a:hover{
+  color:var(--accent-lav);
+}
+
+/* Newsletter */
+
+.pms-news{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.pms-news input{
+  flex:1;
+  padding:10px;
+  background:transparent;
+  border:1px solid white;
+  color:white;
+}
+
+.pms-news button{
+  padding:10px 14px;
+  border:none;
+  background:var(--accent-lav);
+  cursor:pointer;
+}
+
+.pms-note{
+  font-size:12px;
+  opacity:0.7;
+  margin-top:8px;
+}
+
+/* Contact */
+
+.contact-item{
+  font-size:14px;
+  margin:8px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+}
+
+/* Social */
+
+.pms-social{
+  margin-top:10px;
+}
+
+.pms-social a{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.2);
+  margin-right:8px;
+  text-decoration:none;
+  color:white;
+  transition:0.25s;
+}
+
+.pms-social a:hover{
+  background:white;
+  transform:translateY(-4px);
+}
+
+/* Colors */
+
+.social-facebook{color:#1877F2;}
+.social-instagram{color:#E1306C;}
+.social-youtube{color:#FF0000;}
+
+/* Bottom */
+
+.pms-bottom{
+  margin-top:25px;
+  border-top:1px solid rgba(255,255,255,0.2);
+  padding-top:15px;
+  text-align:center;
+  font-size:14px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+  .pms-inner{
+    flex-direction:column;
+  }
+
+  .pms-brand{
+    text-align:center;
+  }
+
+}

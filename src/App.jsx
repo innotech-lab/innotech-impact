@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import Navbar from './Components/Navbar/Navbar'
+import Navbar from './Components/Navbar/navbar'
+import Footer from './Components/Footer/footer'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className='app'>
     <Navbar/>
+    <Footer/>
     </div>
    
   )

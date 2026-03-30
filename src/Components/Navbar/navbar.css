@@ -12,11 +12,46 @@
     align-items: center;
     z-index: 1000;
 }
-
-.logo h1{
-    color: #333;
+/* ===== LEFT SECTION ===== */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
+/* ===== LOGO CIRCLE ===== */
+.logo-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #ffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* IMAGE */
+.logo-img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* ===== TEXT ===== */
+.logo-text h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+.logo-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+/* CENTER MENU */
 .navLists{
     display: flex;
     align-items: center;
