@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import Logor from "../../assets/Logor.png";
 import { FaFacebookF, FaInstagram, FaYoutube, FaPhone, FaMapMarkerAlt, FaCrosshairs } from "react-icons/fa";
 
@@ -12,69 +13,84 @@ const Footer = () => {
   };
 
   return (
-    <footer className="pms-footer">
 
-      <div className="pms-inner">
 
-        {/* Brand */}
-        <div className="pms-block pms-brand">
-          <img src={Logor} alt="Logo" className="pms-logo" />
-          <p className="pms-desc">
-            Learn music with passion and professionalism. Lessons for all ages.
+
+
+    
+ <footer className="footer">
+      <div className="container">
+
+        {/* LEFT */}
+        <div className="footer-box about">
+          <h2 className="logo">Innotech</h2>
+
+          <p>
+            The charms of pleasure of the expect moment, so blinded by desire,
+            thats they cannot fores that bound to.
           </p>
+
+          <div className="socials">
+            <i className="fab fa-facebook-f"></i>
+            <i className="fab fa-instagram"></i>
+            <i className="fab fa-twitter"></i>
+          </div>
         </div>
 
-        {/* Links */}
-        <div className="pms-block">
-          <h4>Links</h4>
-          <ul className="pms-list">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/services">Web&Mobile</a></li>
-            <li><a href="/teachers">Formation</a></li>
-            <li><a href="/contact">Contact</a></li>
+        {/* CONTACT */}
+        <div className="footer-box">
+          <h3>Contact info</h3>
+
+          <div className="contact-item">
+            <i className="fa fa-location-dot"></i>
+            <span>
+              30 Commercial Road <br />
+              Fratton, Australia
+            </span>
+          </div>
+
+          <div className="contact-item">
+            <i className="fa fa-envelope"></i>
+            <span>
+              insurin@company.com <br />
+              1-888-452-1505
+            </span>
+          </div>
+
+          <div className="contact-item">
+            <i className="fa fa-phone"></i>
+            <span>
+              Mon – Sat: 8 am – 5 pm, <br />
+              Sunday: CLOSED
+            </span>
+          </div>
+        </div>
+
+        {/* COMPANY */}
+        <div className="footer-box">
+          <h3>Our Company</h3>
+
+          <ul>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">News & Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Customer Support</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Website Accessibility</a></li>
           </ul>
         </div>
 
-        {/* Newsletter */}
-        <div className="pms-block">
-          <h4>Newsletter</h4>
-          <p>Receive our tips, events, and offers.</p>
+        {/* NEWSLETTER */}
+        <div className="footer-box">
+          <h3>Subscribe newsletter</h3>
 
-          <form className="pms-news" onSubmit={handleSubmit}>
-            <input type="email" placeholder="Your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
-
-          <p className="pms-note">We respect your privacy.</p>
-        </div>
-
-        {/* Contact */}
-        <div className="pms-block">
-          <h4>Contact</h4>
-
-          <p className="contact-item">
-            <FaMapMarkerAlt /> Kabondo, Bujumbura, Burundi
-          </p>
-
-          <p className="contact-item">
-            <FaPhone /> +25763833
-          </p>
-
-          <p className="contact-item">
-            <FaCrosshairs /> Kabondo, Burundi
-          </p>
-
-          <div className="pms-social">
-            <a href="#" className="social-facebook"><FaFacebookF /></a>
-            <a href="#" className="social-instagram"><FaInstagram /></a>
-            <a href="https://www.youtube.com/@danny_bay" target="_blank" rel="noopener noreferrer" className="social-youtube"><FaYoutube /></a>
-          </div>
+          <input type="email" placeholder="Email" />
+          <button>Subscribe Now</button>
         </div>
 
       </div>
 
-      <div className="pms-bottom">
+      <div className="copyright">
         © {year} INNOTECH — Created by Team Innotech
       </div>
 

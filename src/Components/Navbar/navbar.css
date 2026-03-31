@@ -1,157 +1,239 @@
-/* ===== BASE ===== */
+/* =============================
+   GLOBAL STYLE
+============================= */
 
-.header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: whitesmoke;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-}
-/* ===== LEFT SECTION ===== */
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== LOGO CIRCLE ===== */
-.logo-circle {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background-color: #ffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+header{
+  width:100%;
 }
 
-/* IMAGE */
-.logo-img {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
+/* =============================
+   TOP HEADER
+============================= */
+
+.top-header{
+  background:#f3f3f3;
+  padding:15px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
-/* ===== TEXT ===== */
-.logo-text h3 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-  color: #222;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.logo-text p {
-  margin: 0;
-  font-size: 13px;
-  color: #666;
-}
-/* CENTER MENU */
-.navLists{
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
+.logo-img{
+  width:45px;
 }
 
-.navLink{
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
+.logo h2{
+  font-size:28px;
+  font-weight:bold;
 }
 
-.btn{
-    padding: .5rem 1rem;
-    border: none;
-    background: #007bff;
-    border-radius: 5px;
+/* CONTACT */
+
+.contact-info{
+  display:flex;
+  align-items:center;
+  gap:30px;
 }
 
-.btn a{
-    color: white;
-    text-decoration: none;
+.info{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.icon{
-    font-size: 25px;
-    cursor: pointer;
+.info i{
+  font-size:26px;
+  color:#1e88e5;
 }
 
-/* cacher icons desktop */
-.toggleNavbar,
-.closeNavbar{
-    display: none;
+.info strong{
+  font-size:16px;
 }
 
-/* ===== MOBILE (petit écran) ===== */
-
-@media screen and (max-width:768px){
-
-.navBar{
-    position: absolute;
-    background: whitesmoke;
-    width: 80%;
-    top: -500%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: .4s ease;
+.info p{
+  font-size:14px;
+  color:#555;
 }
 
-/* menu actif */
-.activeNavbar{
-    top: 6rem;
+.divider{
+  width:1px;
+  height:45px;
+  background:#ccc;
 }
 
-.navLists{
-    flex-direction: column;
-    gap: 1.5rem;
+/* =============================
+   NAVBAR
+============================= */
+
+.navbar{
+  background:linear-gradient(90deg,#1565c0,#26c6da);
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.toggleNavbar{
-    display: block;
+.menu{
+  list-style:none;
+  display:flex;
+  gap:35px;
 }
 
-.closeNavbar{
-    display: block;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:500;
+  transition:.3s;
 }
 
+.menu a:hover{
+  opacity:0.8;
 }
 
-/* ===== TABLETTE (écran moyen) ===== */
+/* RIGHT SIDE */
 
-@media screen and (min-width:769px) and (max-width:1024px){
-
-.navLists{
-    gap: 1.2rem;
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:20px;
 }
 
-.navLink{
-    font-size: 14px;
+.search-btn{
+  background:none;
+  border:none;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
 }
 
+.quote-btn{
+  background:white;
+  color:#1565c0;
+  border:none;
+  padding:10px 22px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
 }
 
-/* ===== GRAND ÉCRAN ===== */
-
-@media screen and (min-width:1025px){
-
-.navLists{
-    gap: 2.5rem;
+.quote-btn:hover{
+  background:#e3f2fd;
 }
 
-.navLink{
-    font-size: 16px;
+/* =====================================
+   📱 PETIT ECRAN (Mobile)
+   max-width: 768px
+===================================== */
+
+@media (max-width:768px){
+
+  .top-header{
+    padding:15px 20px;
+    flex-direction:column;
+    text-align:center;
+    gap:15px;
+  }
+
+  .contact-info{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .divider{
+    display:none;
+  }
+
+  .navbar{
+    flex-direction:column;
+    gap:15px;
+    padding:20px;
+  }
+
+  .menu{
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+  }
+
+  .menu a{
+    font-size:16px;
+  }
+
+  .nav-right{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .quote-btn{
+    width:100%;
+  }
 }
 
+/* =====================================
+   📲 ECRAN MOYEN (Tablet)
+   769px — 1024px
+===================================== */
+
+@media (min-width:769px) and (max-width:1024px){
+
+  .top-header{
+    padding:15px 30px;
+  }
+
+  .navbar{
+    padding:18px 30px;
+  }
+
+  .menu{
+    gap:20px;
+  }
+
+  .menu a{
+    font-size:17px;
+  }
+
+  .contact-info{
+    gap:20px;
+  }
 }
+
+/* =====================================
+   🖥 GRAND ECRAN (Desktop)
+   min-width:1025px
+===================================== */
+
+@media (min-width:1025px){
+
+  .top-header{
+    padding:15px 80px;
+  }
+
+  .navbar{
+    padding:20px 80px;
+  }
+
+  .menu a{
+    font-size:19px;
+  }
+
+  .logo h2{
+    font-size:30px;
+  }
+}
+
