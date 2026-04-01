@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-import Logor from "../../assets/Logor.png";
+import Innotech from "../../assets/Innotech.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Navbar = () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
       {/* ===== TOP HEADER ===== */}
       <div className="top-header">
         <div className="logo">
-          <img src={Logor} alt="Innotech Logo" className="logo-img" />
+          <img src={Innotech} alt="Innotech Logo" className="logo-img" />
           <h2></h2>
         </div>
 

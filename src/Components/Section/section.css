@@ -11,18 +11,20 @@
 }
 
 .logo {
-  text-align: center;
   margin: 0 40px;
-  min-width: 180px;
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo img {
-  width: 80px;
+.logo-img {
+  width: 100px;
   height: auto;
-  margin-bottom: 10px;
+  object-fit: contain;
 }
 
-/* Animation */
+/* Animation défilement */
 @keyframes scroll {
   from {
     transform: translateX(0);
@@ -30,11 +32,6 @@
   to {
     transform: translateX(-50%);
   }
-}
-
-/* Pause hover */
-.banner:hover .logos-slide {
-  animation-play-state: paused;
 }
 /* =========================
    GRAND ECRAN (Desktop ≥1200px)

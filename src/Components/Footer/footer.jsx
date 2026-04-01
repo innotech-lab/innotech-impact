@@ -1,7 +1,7 @@
 import React from "react";
 import "./footer.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Logor from "../../assets/Logor.png";
+import Innotech from "../../assets/Innotech.png";
 import { FaFacebookF, FaInstagram, FaYoutube, FaPhone, FaMapMarkerAlt, FaCrosshairs } from "react-icons/fa";
 
 const Footer = () => {
@@ -13,11 +13,6 @@ const Footer = () => {
   };
 
   return (
-
-
-
-
-    
  <footer className="footer">
       <div className="container">
 
