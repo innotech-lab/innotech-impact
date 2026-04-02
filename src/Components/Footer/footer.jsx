@@ -1,95 +1,67 @@
 import React from "react";
 import "./footer.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import Innotech from "../../assets/Innotech.png";
-import { FaFacebookF, FaInstagram, FaYoutube, FaPhone, FaMapMarkerAlt, FaCrosshairs } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaClock } from "react-icons/fa";
 
 const Footer = () => {
-  const year = new Date().getFullYear();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you!");
-  };
-
   return (
- <footer className="footer">
-      <div className="container">
+    <>
+      {/* Main footer */}
+      <footer className="footer">
 
-        {/* LEFT */}
-        <div className="footer-box about">
-          <h2 className="logo">Innotech</h2>
+        <div className="footer-container">
 
-          <p>
-            The charms of pleasure of the expect moment, so blinded by desire,
-            thats they cannot fores that bound to.
-          </p>
+          {/* Contact */}
+          <div className="footer-col">
+            <h3>Innotech</h3>
 
-          <div className="socials">
-            <i className="fab fa-facebook-f"></i>
-            <i className="fab fa-instagram"></i>
-            <i className="fab fa-twitter"></i>
-          </div>
-        </div>
+            <p className="desc">
+              The charm of pleasure of the moment, so blinded by desire,
+              that they cannot foresee the pain and trouble.
+            </p>
 
-        {/* CONTACT */}
-        <div className="footer-box">
-          <h3>Contact info</h3>
+            <p><FaMapMarkerAlt /> 30 Commercial Road Fratton, Australia</p>
+            <p><FaEnvelope /> insurin@company.com</p>
+            <p><FaClock /> Mon – Sat: 8am – 5pm</p>
 
-          <div className="contact-item">
-            <i className="fa fa-location-dot"></i>
-            <span>
-              30 Commercial Road <br />
-              Fratton, Australia
-            </span>
+            <div className="socials">
+              <FaFacebookF />
+              <FaInstagram />
+              <FaTwitter />
+            </div>
           </div>
 
-          <div className="contact-item">
-            <i className="fa fa-envelope"></i>
-            <span>
-              insurin@company.com <br />
-              1-888-452-1505
-            </span>
+          {/* Company links */}
+          <div className="footer-col">
+            <h4>Our Company</h4>
+            <ul>
+              <li>Our Story</li>
+              <li>News & Blog</li>
+              <li>Careers</li>
+              <li>Customer Support</li>
+              <li>Contact Us</li>
+              <li>Website Accessibility</li>
+            </ul>
           </div>
 
-          <div className="contact-item">
-            <i className="fa fa-phone"></i>
-            <span>
-              Mon – Sat: 8 am – 5 pm, <br />
-              Sunday: CLOSED
-            </span>
+          {/* Newsletter */}
+          <div className="footer-col">
+            <h4>Subscribe newsletter</h4>
+
+            <div className="newsletter">
+              <input type="email" placeholder="Email" />
+              <button>Subscribe Now</button>
+            </div>
+
           </div>
+
         </div>
 
-        {/* COMPANY */}
-        <div className="footer-box">
-          <h3>Our Company</h3>
-
-          <ul>
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">News & Blog</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Customer Support</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Website Accessibility</a></li>
-          </ul>
+        <div className="footer-bottom">
+          Copyright © 2022 INNOTECH — All Rights Reserved
         </div>
 
-        {/* NEWSLETTER */}
-        <div className="footer-box">
-          <h3>Subscribe newsletter</h3>
-
-          <input type="email" placeholder="Email" />
-          <button>Subscribe Now</button>
-        </div>
-
-      </div>
-
-      <div className="copyright">
-        © {year} INNOTECH — Created by Team Innotech
-      </div>
-
-    </footer>
+      </footer>
+    </>
   );
 };
 
