@@ -13,14 +13,9 @@ function App() {
   return (
     <div className='app'>
     <Navbar/>
-<<<<<<< HEAD
     <Home/>
     <About/>
-=======
-     <Home/>
-    <About/>
     <Service />
->>>>>>> 2ff34dc (Initial commit: Ajout de la section Services)
     <Section/>
     <Footer/>
     </div>
