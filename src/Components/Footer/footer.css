@@ -105,6 +105,7 @@
 
 .footer-container{
   flex-direction:column;
+<<<<<<< HEAD
 }
 
 .newsletter{
@@ -113,3 +114,13 @@
 }
 
 }
+=======
+}
+
+.newsletter{
+  flex-direction:column;
+  gap:10px;
+}
+
+}
+>>>>>>> 2ff34dc (Initial commit: Ajout de la section Services)
