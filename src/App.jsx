@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar/navbar'
 import Footer from './Components/Footer/footer'
+import About from './Components/About/about'
 import Section from './Components/Section/section'
 import './App.css'
 
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className='app'>
     <Navbar/>
+    <About/>
     <Section/>
     <Footer/>
     </div>
