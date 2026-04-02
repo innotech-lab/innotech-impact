@@ -12,8 +12,8 @@ function App() {
   return (
     <div className='app'>
     <Navbar/>
-    <About/>
     <Home/>
+    <About/>
     <Section/>
     <Footer/>
     </div>
