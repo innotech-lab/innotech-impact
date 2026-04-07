@@ -5,6 +5,7 @@ import Footer from './Components/Footer/footer'
 import About from './Components/About/about'
 import Section from './Components/Section/section'
 import Service from './Components/Service/service'
+import Contact from './Components/Contact/contact'
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <Home/>
     <About/>
     <Service />
+    <Contact />
     <Section/>
     <Footer/>
     </div>
