@@ -41,3 +41,28 @@
 .contact-form button:hover {
   background-color: #333;
 }
+/* 📱 Petits écrans (mobile) */
+@media (max-width: 600px) {
+  .contact {
+    padding: 20px;
+  }
+
+  .contact h2 {
+    font-size: 20px;
+  }
+
+  .contact-form {
+    max-width: 100%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .contact-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
