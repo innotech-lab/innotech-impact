@@ -1,239 +1,154 @@
-/* =============================
-   GLOBAL STYLE
-============================= */
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== HEADER ===== */
+.header {
+  width: 100%;
+  font-family: sans-serif;
 }
 
-header{
-  width:100%;
+/* TOP HEADER */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #fff;
 }
 
-/* =============================
-   TOP HEADER
-============================= */
-
-.top-header{
-  background:#f3f3f3;
-  padding:15px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+/* LOGO CONTAINER */
+.logo {
+  display: flex;
+  align-items: center;
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
+/* LOGO IMAGE */
+.logo img {
+  width: 220px;      /* ubunini bwa desktop */
+  height: auto;
+  object-fit: contain;
+  max-width: 100%;
+  transition: transform 0.3s ease;
 }
 
-.logo-img{
-  width:45px;
+/* HOVER EFFECT (pro look) */
+.logo img:hover {
+  transform: scale(1.05);
 }
 
-.logo h2{
-  font-size:28px;
-  font-weight:bold;
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-/* CONTACT */
-
-.contact-info{
-  display:flex;
-  align-items:center;
-  gap:30px;
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.info{
-  display:flex;
-  align-items:center;
-  gap:12px;
+.divider {
+  width: 1px;
+  height: 40px;
+  background: #ddd;
 }
 
-.info i{
-  font-size:26px;
-  color:#1e88e5;
+/* ===== NAVBAR ===== */
+
+.navbar {
+  background: #0c1b2a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: relative;
 }
 
-.info strong{
-  font-size:16px;
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
 }
 
-.info p{
-  font-size:14px;
-  color:#555;
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.divider{
-  width:1px;
-  height:45px;
-  background:#ccc;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-/* =============================
-   NAVBAR
-============================= */
-
-.navbar{
-  background:linear-gradient(90deg,#1565c0,#26c6da);
-  padding:18px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.quote-btn {
+  background: #6aa121;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.menu{
-  list-style:none;
-  display:flex;
-  gap:35px;
+/* ===== HAMBURGER ===== */
+
+.hamburger {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
 }
-
-.menu a{
-  color:white;
-  text-decoration:none;
-  font-size:18px;
-  font-weight:500;
-  transition:.3s;
-}
-
-.menu a:hover{
-  opacity:0.8;
-}
-
-/* RIGHT SIDE */
-
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
-
-.search-btn{
-  background:none;
-  border:none;
-  color:white;
-  font-size:20px;
-  cursor:pointer;
-}
-
-.quote-btn{
-  background:white;
-  color:#1565c0;
-  border:none;
-  padding:10px 22px;
-  border-radius:8px;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.quote-btn:hover{
-  background:#e3f2fd;
-}
-
-/* =====================================
-   📱 PETIT ECRAN (Mobile)
-   max-width: 768px
-===================================== */
-
-@media (max-width:768px){
-
-  .top-header{
-    padding:15px 20px;
-    flex-direction:column;
-    text-align:center;
-    gap:15px;
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+  .logo {
+    justify-content: center;
   }
 
-  .contact-info{
-    flex-direction:column;
-    gap:15px;
-  }
-
-  .divider{
-    display:none;
-  }
-
-  .navbar{
-    flex-direction:column;
-    gap:15px;
-    padding:20px;
-  }
-
-  .menu{
-    flex-direction:column;
-    align-items:center;
-    gap:15px;
-  }
-
-  .menu a{
-    font-size:16px;
-  }
-
-  .nav-right{
-    flex-direction:column;
-    gap:10px;
-  }
-
-  .quote-btn{
-    width:100%;
+  .logo img {
+    width: 180px; /* mobile size */
   }
 }
 
-/* =====================================
-   📲 ECRAN MOYEN (Tablet)
-   769px — 1024px
-===================================== */
+@media (max-width: 992px) {
 
-@media (min-width:769px) and (max-width:1024px){
-
-  .top-header{
-    padding:15px 30px;
+  .contact-info {
+    display: none;
   }
 
-  .navbar{
-    padding:18px 30px;
+  .hamburger {
+    display: block;
+    color: white;
+    font-size: 24px;
   }
 
-  .menu{
-    gap:20px;
+  /* MENU HIDDEN BY DEFAULT */
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #0c1b2a;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+
+    display: none;   /* IMPORTANT */
+    z-index: 999;
   }
 
-  .menu a{
-    font-size:17px;
+  /* SHOW WHEN ACTIVE */
+  .menu.active {
+    display: flex;
   }
 
-  .contact-info{
-    gap:20px;
-  }
-}
-
-/* =====================================
-   🖥 GRAND ECRAN (Desktop)
-   min-width:1025px
-===================================== */
-
-@media (min-width:1025px){
-
-  .top-header{
-    padding:15px 80px;
+  .nav-right {
+    display: none;
   }
 
-  .navbar{
-    padding:20px 80px;
-  }
-
-  .menu a{
-    font-size:19px;
-  }
-
-  .logo h2{
-    font-size:30px;
+  .navbar {
+    position: relative; /* VERY IMPORTANT */
   }
 }
-
