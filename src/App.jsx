@@ -4,6 +4,7 @@ import Home from './Components/Home/home'
 import Footer from './Components/Footer/footer'
 import About from './Components/About/about'
 import Section from './Components/Section/section'
+import Temoignage from './Components/Temoignage/temoignage'
 import Service from './Components/Service/service'
 import './App.css'
 
@@ -16,6 +17,7 @@ function App() {
     <Home/>
     <About/>
     <Service />
+    <Temoignage/>
     <Section/>
     <Footer/>
     </div>

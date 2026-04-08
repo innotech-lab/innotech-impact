@@ -4,18 +4,21 @@ import "./home.css";
 const slides = [
   {
     image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-    title: "Consulting People Grow Up Their Business Idea",
-    subtitle: "Lorem ipsum dolor sit amet, ligula magna at etiam aliquet venenatis. Vitae sit felis donec, suscipit tortor et sapien donec ac nec.",
+    title: "INNOTECH IMPACT",
+    subtitle:
+      "Innovation pour tous — Nous aidons les entreprises et les jeunes innovateurs à construire le futur numérique.",
   },
   {
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c",
-    title: "Build The Future With Innovation",
-    subtitle: "Nam vel eu amet, vitae sit felis donec suscipit tortor et sapien donec ac nec lorem ipsum dolor.",
+    title: "Innovation & Technologie",
+    subtitle:
+      "Construisons ensemble des solutions intelligentes adaptées au monde moderne.",
   },
   {
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-    title: "Transform Your Vision Into Reality",
-    subtitle: "Ligula magna at etiam aliquet venenatis vitae sit felis donec suscipit tortor et sapien donec.",
+    title: "Transform Your Vision",
+    subtitle:
+      "Nous transformons vos idées en projets réels grâce à la technologie.",
   },
 ];
 
@@ -26,20 +29,30 @@ const Home = () => {
     const timer = setInterval(() => {
       setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1));
     }, 4000);
+
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="hero" style={{ backgroundImage: `url(${slides[current].image})` }}>
+    <section
+      className="hero"
+      style={{ backgroundImage: `url(${slides[current].image})` }}
+    >
       <div className="overlay"></div>
 
       <div className="hero-content">
-        <h1>{slides[current].title}</h1>
+
+        {/* TITRE AVEC COULEUR LOGO */}
+        <h1>
+          <span className="green">INNOTECH</span>{" "}
+          <span className="white">IMPACT</span>
+        </h1>
+
         <p>{slides[current].subtitle}</p>
 
         <div className="buttons">
-          <button className="btn btn-primary">Learn More →</button>
-          <button className="btn btn-secondary">Contact Us →</button>
+          <button className="btn btn-primary">Découvrir →</button>
+          <button className="btn btn-secondary">Contactez-nous →</button>
         </div>
 
         <div className="scroll-indicator">

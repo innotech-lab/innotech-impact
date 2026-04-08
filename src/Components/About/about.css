@@ -42,7 +42,7 @@
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                    linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px);
+                  linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px);
   background-size: 40px 40px;
   z-index: 0;
 }
@@ -96,7 +96,7 @@
   justify-content: center;
   padding: 80px;
   gap: 60px;
-  background: linear-gradient(135deg, #0a0f2c, #1b2a6b);
+  background: #111111;
   color: white;
 }
 
@@ -117,6 +117,10 @@
 
 .about-content h2 {
   font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6FA320;
   margin-bottom: 20px;
 }
 
@@ -124,7 +128,7 @@
   font-size: 16px;
   line-height: 1.7;
   margin-bottom: 15px;
-  color: #d1d5db;
+  color: #e5e5e5;
 }
 
 .about-buttons {
@@ -135,31 +139,40 @@
 
 .btn-outline {
   background: transparent;
-  border: 2px solid #ff7a00;
-  color: #ff7a00;
+  border: 2px solid #ffffff;
+  color: #ffffff;
   padding: 12px 25px;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
   transition: 0.3s;
 }
 
 .btn-outline:hover {
-  background: #ff7a00;
-  color: white;
+  background: #ffffff;
+  color: #111111;
+  transform: translateY(-2px);
 }
 
 .btn-filled {
-  background: #ff7a00;
-  border: none;
+  background: #6FA320;
+  border: 2px solid #6FA320;
   color: white;
   padding: 12px 25px;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px rgba(111, 163, 32, 0.4);
   transition: 0.3s;
 }
 
 .btn-filled:hover {
-  background: #e66a00;
+  background: #5a861a;
+  border-color: #5a861a;
+  box-shadow: 0 6px 18px rgba(111, 163, 32, 0.5);
+  transform: translateY(-2px);
 }
 
 button span {
