@@ -1,67 +1,82 @@
 import React from "react";
 import "./footer.css";
-import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaClock } from "react-icons/fa";
+import Logor from "../../assets/Logor.png";
+
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaClock
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <>
-      {/* Main footer */}
-      <footer className="footer">
+    <footer className="footer">
 
-        <div className="footer-container">
+      <div className="footer-container">
 
-          {/* Contact */}
-          <div className="footer-col">
-            <h3>Innotech</h3>
+        {/* BRAND */}
+        <div className="footer-brand">
+          <img src={Logor} alt="Innotech Impact" />
 
-            <p className="desc">
-              The charm of pleasure of the moment, so blinded by desire,
-              that they cannot foresee the pain and trouble.
-            </p>
+          <p>
+            Innovation pour tous. We create smart digital solutions
+            that help businesses grow through modern technology.
+          </p>
 
-            <p><FaMapMarkerAlt /> 30 Commercial Road Fratton, Australia</p>
-            <p><FaEnvelope /> insurin@company.com</p>
-            <p><FaClock /> Mon – Sat: 8am – 5pm</p>
-
-            <div className="socials">
-              <FaFacebookF />
-              <FaInstagram />
-              <FaTwitter />
-            </div>
+          <div className="socials">
+            <FaFacebookF />
+            <FaInstagram />
+            <FaTwitter />
           </div>
-
-          {/* Company links */}
-          <div className="footer-col">
-            <h4>Our Company</h4>
-            <ul>
-              <li>Our Story</li>
-              <li>News & Blog</li>
-              <li>Careers</li>
-              <li>Customer Support</li>
-              <li>Contact Us</li>
-              <li>Website Accessibility</li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="footer-col">
-            <h4>Subscribe newsletter</h4>
-
-            <div className="newsletter">
-              <input type="email" placeholder="Email" />
-              <button>Subscribe Now</button>
-            </div>
-
-          </div>
-
         </div>
 
-        <div className="footer-bottom">
-          Copyright © 2022 INNOTECH — All Rights Reserved
+        {/* NAVIGATION */}
+        <div className="footer-links">
+          <h3>Navigation</h3>
+          <ul>
+            <li>About Us</li>
+            <li>Services</li>
+            <li>Projects</li>
+            <li>Portfolio</li>
+            <li>Contact</li>
+          </ul>
         </div>
 
-      </footer>
-    </>
+        {/* SUPPORT */}
+        <div className="footer-links">
+          <h3>Support</h3>
+          <ul>
+            <li>Help Center</li>
+            <li>Privacy Policy</li>
+            <li>Terms</li>
+            <li>FAQs</li>
+          </ul>
+        </div>
+
+        {/* CONTACT */}
+        <div className="footer-contact">
+          <h3>Contact</h3>
+
+          <p><FaMapMarkerAlt /> Gitega, Burundi</p>
+          <p><FaEnvelope /> info@innotech.bi</p>
+          <p><FaClock /> Mon – Sat : 8h – 17h</p>
+
+          <div className="newsletter">
+            <input type="email" placeholder="Your email" />
+            <button>Subscribe</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div className="footer-bottom">
+        © {new Date().getFullYear()} INNOTECH IMPACT — Innovation pour tous
+      </div>
+
+    </footer>
   );
 };
 
