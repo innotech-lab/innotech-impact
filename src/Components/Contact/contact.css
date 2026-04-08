@@ -1,7 +1,16 @@
-
 .contact {
   padding: 40px;
   text-align: center;
+  color: #8cc63f; /* Couleur principale issue du logo */
+
+  background:
+    linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.4) 30%,
+      rgba(0, 0, 0, 0) 60%
+    ),
+    url("/contact-bg.png") center/cover no-repeat;
 }
 
 .contact h2 {
@@ -19,9 +28,10 @@
 .contact-form textarea {
   margin-bottom: 15px;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; /* Couleur de bordure par défaut, adaptable */
   border-radius: 6px;
   font-size: 16px;
+  color: #333; /* Texte du formulaire lisible */
 }
 
 .contact-form textarea {
@@ -31,16 +41,18 @@
 
 .contact-form button {
   padding: 12px;
-  background-color: black;
-  color: white;
+  background-color: #8cc63f; /* Couleur de fond du bouton (vert du logo) */
+  color: white; /* Texte du bouton blanc pour le contraste */
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: bold; /* Texte du bouton en gras pour la lisibilité */
 }
 
 .contact-form button:hover {
-  background-color: #333;
+  background-color: #7ab337; /* Couleur de survol légèrement plus foncée */
 }
+
 /* 📱 Petits écrans (mobile) */
 @media (max-width: 600px) {
   .contact {

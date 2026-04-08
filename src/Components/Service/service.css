@@ -1,10 +1,11 @@
-
 :root {
-  --primary-color: #6366f1; /* Indigo moderne */
+  /* Couleurs extraites du logo Innotech Impact */
+  --primary-color: #8cc63f;    /* Le vert "Innovation" */
+  --primary-dark: #7ab337;     /* Une nuance pour le hover */
   --bg-color: #ffffff;
-  --text-main: #1f2937;
-  --text-muted: #6b7280;
-  --card-bg: #f8fafc;
+  --text-main: #1a1a1a;        /* Anthracite profond issu du texte du logo */
+  --text-muted: #555555;
+  --card-bg: #f9fafb;
 }
 
 .startup-services {
@@ -24,12 +25,13 @@
 
 .badge {
   color: var(--primary-color);
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(140, 198, 63, 0.1); /* Vert avec opacité légère */
   padding: 6px 12px;
   border-radius: 20px;
   font-weight: 600;
   font-size: 0.85rem;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .header-content h2 {
@@ -62,7 +64,7 @@
 
 .card:hover {
   background: #fff;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 20px 40px rgba(140, 198, 63, 0.12); /* Ombre teintée en vert */
   transform: translateY(-8px);
   border-color: var(--primary-color);
 }
@@ -91,10 +93,11 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
 }
 
 .learn-more:hover {
+  color: var(--primary-dark);
   text-decoration: underline;
 }
 
