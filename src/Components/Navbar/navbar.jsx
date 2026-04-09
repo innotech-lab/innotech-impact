@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.css";
-import Innotech from "../../assets/Innotech.png";
+import Inno from "../../assets/Inno.jpg";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Navbar = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header>
+    <header className="header">
+
       {/* ===== TOP HEADER ===== */}
       <div className="top-header">
+
         <div className="logo">
-          <img src={Innotech} alt="Innotech Logo" className="logo-img" />
-          <h2></h2>
+          <img src={Inno} alt="Innotech Impact" />
         </div>
 
         <div className="contact-info">
           <div className="info">
             <i className="fa-solid fa-location-dot"></i>
             <div>
-              <strong>Contact us</strong>
-              <p>25/2 Norda, Ukrain</p>
+              <strong>Contact</strong>
+              <p>Gitega, Burundi</p>
             </div>
           </div>
 
@@ -27,8 +31,8 @@ const Navbar = () => {
           <div className="info">
             <i className="fa-solid fa-envelope"></i>
             <div>
-              <strong>Email us</strong>
-              <p>info@insurin.com</p>
+              <strong>Email</strong>
+              <p>info@innotech.bi</p>
             </div>
           </div>
 
@@ -37,8 +41,8 @@ const Navbar = () => {
           <div className="info">
             <i className="fa-solid fa-phone"></i>
             <div>
-              <strong>Free Call</strong>
-              <p>(+02) – 23456789</p>
+              <strong>Call</strong>
+              <p>+257 00 00 00</p>
             </div>
           </div>
         </div>
@@ -46,45 +50,32 @@ const Navbar = () => {
 
       {/* ===== NAVBAR ===== */}
       <nav className="navbar">
-        <ul className="menu">
+
+        {/* Hamburger */}
+        <div
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <i className="fa-solid fa-bars"></i>
+        </div>
+
+        <ul className={menuOpen ? "menu active" : "menu"}>
           <li><a href="/">Home</a></li>
-          <li><a href="/about">About Us</a></li>
-
-          <li className="dropdown">
-            <a href="#">
-              Web&Mobile
-            </a>
-          </li>
-
-          <li className="dropdown">
-            <a href="#">
-              Formation
-            </a>
-          </li>
-
-          <li className="dropdown">
-            <a href="#">
-              Blog 
-            </a>
-          </li>
-
-          <li className="dropdown">
-            <a href="#">
-              Portfolio
-            </a>
-          </li>
+          <li><a href="/">About</a></li>
+          <li><a href="/">Services</a></li>
+          <li><a href="/">Projects</a></li>
+          <li><a href="/">Portfolio</a></li>
+          <li><a href="/">Formation</a></li>
+          <li><a href="/">Contact</a></li>
         </ul>
 
         <div className="nav-right">
-          <button className="search-btn" aria-label="Search">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-
-          <button className="quote-btn">
-            Devis
-          </button>
+          <i className="fa-solid fa-magnifying-glass search-icon"></i>
+          <button className="quote-btn">Devis</button>
         </div>
+
       </nav>
+
     </header>
   );
 };

@@ -6,6 +6,7 @@ import About from './Components/About/about'
 import Section from './Components/Section/section'
 import Temoignage from './Components/Temoignage/temoignage'
 import Service from './Components/Service/service'
+import Contact from './Components/Contact/contact'
 import './App.css'
 
 function App() {
@@ -17,7 +18,11 @@ function App() {
     <Home/>
     <About/>
     <Service />
+<<<<<<< HEAD
     <Temoignage/>
+=======
+    <Contact />
+>>>>>>> 5d2d808b62433f9644a14a6f5190356a34b0ce27
     <Section/>
     <Footer/>
     </div>
