@@ -18,11 +18,8 @@ function App() {
     <Home/>
     <About/>
     <Service />
-<<<<<<< HEAD
     <Temoignage/>
-=======
     <Contact />
->>>>>>> 5d2d808b62433f9644a14a6f5190356a34b0ce27
     <Section/>
     <Footer/>
     </div>
