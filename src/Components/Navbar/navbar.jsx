@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./navbar.css";
-import Inno from "../../assets/Inno.jpg";
+import Innotech from "../../assets/Innotech.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
       <div className="top-header">
 
         <div className="logo">
-          <img src={Inno} alt="Innotech Impact" />
+          <img src={Innotech} alt="Innotech Impact" />
         </div>
 
         <div className="contact-info">
@@ -60,13 +61,13 @@ const Navbar = () => {
         </div>
 
         <ul className={menuOpen ? "menu active" : "menu"}>
-          <li><a href="/">Home</a></li>
-          <li><a href="/">About</a></li>
-          <li><a href="/">Services</a></li>
-          <li><a href="/">Projects</a></li>
-          <li><a href="/">Portfolio</a></li>
-          <li><a href="/">Formation</a></li>
-          <li><a href="/">Contact</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/">Services</Link></li>
+          <li><Link to="/">Projects</Link></li>
+          <li><Link to="/">Portfolio</Link></li>
+          <li><Link to="/">Formation</Link></li>
+          <li><Link to="/">Contact</Link></li>
         </ul>
 
         <div className="nav-right">
