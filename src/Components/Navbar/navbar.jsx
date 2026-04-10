@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./navbar.css";
-import Inno from "../../assets/Inno.jpg";
+import Innotech from "../../assets/Innotech.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
       <div className="top-header">
 
         <div className="logo">
-          <img src={Inno} alt="Innotech Impact" />
+          <img src={Innotech} alt="Innotech Impact" />
         </div>
 
         <div className="contact-info">
@@ -65,7 +66,7 @@ const Navbar = () => {
           <li><a href="/">Services</a></li>
           <li><a href="/">Projects</a></li>
           <li><a href="/">Portfolio</a></li>
-          <li><a href="/">Formation</a></li>
+          <li><Link to="/formation">Formation</Link></li>
           <li><a href="/">Contact</a></li>
         </ul>
 
