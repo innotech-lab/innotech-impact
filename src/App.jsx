@@ -13,7 +13,6 @@ import './App.css'
 function App() {
   return (
     <div className='app'>
-<<<<<<< HEAD
       <Navbar />
       <Routes>
         <Route path="/" element={
@@ -29,16 +28,6 @@ function App() {
         <Route path="/about" element={<DetailAbout />} />
       </Routes>
       <Footer />
-=======
-    <Navbar/>
-    <Home/>
-    <About/>
-    <Service />
-    <Temoignage/>
-    <Contact />
-    <Section/>
-    <Footer/>
->>>>>>> c5e956e49ca7aee6f6325d9e66c08fc3a686fb23
     </div>
 
   )
