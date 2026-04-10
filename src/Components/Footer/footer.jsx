@@ -1,6 +1,8 @@
 import React from "react";
 import "./footer.css";
 import TECH from "../../assets/TECH.png";
+import Innotech from "../../assets/Innotech.png";
+
 
 import {
   FaFacebookF,
@@ -19,7 +21,9 @@ const Footer = () => {
 
         {/* BRAND */}
         <div className="footer-brand">
+
           <img src={TECH} alt="Innotech Impact" />
+          <img src={Innotech} alt="Innotech Impact" />
 
           <p>
             Innovation pour tous. We create smart digital solutions
