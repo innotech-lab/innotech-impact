@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Target, Eye, Heart } from 'lucide-react';
 import { useInView } from "../../hooks/useInView";
 import "./DetailAbout.css";
-import aboutImg from "../../assets/hero.png";
+import aboutImg from "../../assets/ordi1.png";
 
 const values = [
   // ... (keep original values)
@@ -47,10 +47,6 @@ const DetailAbout = () => {
         
         <div className="banner-content-wrapper">
           <div className={`banner-animation-container ${v ? 'in-view' : ''}`}>
-            <span className="banner-badge">
-              <span className="badge-dot" />
-              Qui Sommes-Nous ?
-            </span>
             <h1 className="banner-title">À Propos d'Innotech</h1>
             <p className="banner-subtitle">
               Expertise technologique, transformation numérique et innovation au service de votre réussite.
