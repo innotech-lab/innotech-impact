@@ -8,7 +8,7 @@
 /* TITRES */
 
 .subtitle {
-  color: #6FA320;
+  color: #6FA23A;
   font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -20,12 +20,12 @@
   font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #aaaaaa;
   margin-bottom: 10px;
 }
 
 .description {
-  color: #e5e5e5;
+  color: #aaaaaa;
   max-width: 600px;
   margin: auto;
   margin-bottom: 50px;
@@ -42,7 +42,7 @@
 
 .slider-btn {
   background: #6FA320;
-  color: white;
+  color: #aaaaaa;
   border: none;
   border-radius: 50%;
   width: 42px;
@@ -111,31 +111,31 @@
 }
 
 .card-1 .quote { color: #6FA320; }
-.card-1 .text { color: #e5e5e5; }
-.card-1 h4 { color: #ffffff; }
+.card-1 .text { color: #aaaaaa; }
+.card-1 h4 { color: #aaaaaa; }
 .card-1 span { color: #aaaaaa; }
 
 /* Carte 2 : fond vert foncé, texte blanc */
 .card-2 {
-  background: #6FA320;
+  background: #6FA23A;
   box-shadow: 0 4px 20px rgba(111,163,32,0.4);
 }
 
-.card-2 .quote { color: rgba(255,255,255,0.7); }
-.card-2 .text { color: rgba(255,255,255,0.9); }
-.card-2 h4 { color: white; }
+.card-2 .quote { color: #6FA23A; }
+.card-2 .text { color: #aaaaaa; }
+.card-2 h4 { color: #aaaaaa; }
 .card-2 span { color: rgba(255,255,255,0.75); }
 
 /* Carte 3 : fond gris foncé, bordure blanche */
 .card-3 {
   background: #222222;
-  border-left: 5px solid #ffffff;
+  border-left: 5px solid #aaaaaa;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-.card-3 .quote { color: #ffffff; }
-.card-3 .text { color: #e5e5e5; }
-.card-3 h4 { color: #ffffff; }
+.card-3 .quote { color: #6FA23A; }
+.card-3 .text { color: #aaaaaa; }
+.card-3 h4 { color: #aaaaaa; }
 .card-3 span { color: #aaaaaa; }
 
 /* DOTS */
