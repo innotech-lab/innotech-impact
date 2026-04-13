@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Link } from 'react-router-dom';
 import "./navbar.css";
 import Innotech from "../../assets/Innotech.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
