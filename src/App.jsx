@@ -6,9 +6,9 @@ import About from './Components/About/about'
 import Section from './Components/Section/section'
 import Temoignage from './Components/Temoignage/temoignage'
 import Service from './Components/Service/service'
+import Background from './Components/Background/background'
 import Contact from './Components/Contact/contact'
 import DetailAbout from './page/DetailAbout/DetailAbout'
-import Formation from "./page/Formation/formation";
 import './App.css'
 
 function App() {
@@ -23,16 +23,15 @@ function App() {
             <Service />
             <Temoignage />
             <Contact />
+            <Background />
             <Section />
           </>
         } />
         <Route path="/about" element={<DetailAbout />} />
-          {/* Page Formation */}
-        <Route path="/formation" element={<Formation />} />
       </Routes>
       <Footer />
     </div>
   )
 }
 
-export default App;
+export default App
