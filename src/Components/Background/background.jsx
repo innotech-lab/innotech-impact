@@ -3,13 +3,13 @@ import "./background.css";
 import back2 from '../../assets/ba1.png'
 import innotechlogo from "../../assets/video/JuneTech.mp4";
 
-const HeroSection = () => {
+const Background = () => {
   return (
     <section className="herosection">
 
-      {/* BACKGROUND VIDEO */}
-      <div autoPlay muted loop playsInline className="herosection-video">
-        <img src={back2} type="video/mp4" />
+      {/* BACKGROUND IMAGE */}
+      <div className="herosection-video">
+        <img src={back2} alt="Background" />
       </div>
 
       {/* DARK OVERLAY */}
@@ -48,4 +48,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Background;

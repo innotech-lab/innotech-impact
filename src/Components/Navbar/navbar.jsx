@@ -73,7 +73,9 @@ const Navbar = () => {
 
         <div className="nav-right">
           <i className="fa-solid fa-magnifying-glass search-icon"></i>
-          <button className="quote-btn">Devis</button>
+          <Link to="/devis" className="quote-btn" style={{ textDecoration: 'none' }}>
+            Devis <i className="fa-solid fa-arrow-right"></i>
+          </Link>
         </div>
 
       </nav>

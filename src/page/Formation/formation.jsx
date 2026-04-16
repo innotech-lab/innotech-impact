@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import "./Formation.css"; // Assurez-vous que le fichier CSS est dans le même dossier
+import "./formation.css"; // Assurez-vous que le fichier CSS est dans le même dossier
 
 function Formation() {
   const formations = [

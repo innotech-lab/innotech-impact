@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './Service.css';
+import './service.css';
 
 const startupServices = [
   {

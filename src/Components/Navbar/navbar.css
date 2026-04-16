@@ -82,12 +82,39 @@
 }
 
 .quote-btn {
-  background: #6aa121;
+  background: linear-gradient(135deg, #6aa121, #8cc63f);
   border: none;
-  padding: 10px 20px;
+  padding: 10px 24px;
   color: white;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(106, 161, 33, 0.3);
+  transition: all 0.3s ease;
+}
+
+.quote-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(106, 161, 33, 0.5);
+  background: linear-gradient(135deg, #74b325, #9ee045);
+}
+
+.quote-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(106, 161, 33, 0.4);
+}
+
+.quote-btn i {
+  transition: transform 0.3s ease;
+  font-size: 0.9em;
+}
+
+.quote-btn:hover i {
+  transform: translateX(4px);
 }
 
 /* ===== HAMBURGER ===== */

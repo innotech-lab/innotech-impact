@@ -11,6 +11,7 @@ import Contact from './Components/Contact/contact'
 import DetailAbout from './page/DetailAbout/DetailAbout'
 import Formation from './page/Formation/formation'
 import ContactPage from './page/Contact/contact'
+import Devis from './page/Devis/Devis'
 import './App.css'
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/about" element={<DetailAbout />} />
         <Route path="/formation" element={<Formation />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/devis" element={<Devis />} />
       </Routes>
       <Footer />
     </div>
