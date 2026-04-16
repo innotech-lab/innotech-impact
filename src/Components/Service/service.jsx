@@ -1,7 +1,11 @@
 
 import React from 'react';
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import './Service.css';
+=======
+import './service.css';
+>>>>>>> 433ba18e6f01dbda36104a65c76f00fea5624f2d
 
 const startupServices = [
   {

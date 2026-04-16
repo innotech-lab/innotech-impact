@@ -11,8 +11,8 @@
 .banner-dot-pattern {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 30px 30px;
+    background-image: url('../../assets/bac1.png');
+    background-size: 800px;
     opacity: 0.2;
 }
 
@@ -111,7 +111,8 @@
 
 .about-image img {
     width: 100%;
-    border-radius: 20px;
+    height: 50%;
+    border-radius: 4px;
     object-fit: cover;
 }
 
@@ -183,7 +184,7 @@
 /* MISSION SECTION STYLES */
 .about-mission {
     padding: 100px 5%;
-    background: #0d0d0d;
+    background: #ffffff;
     position: relative;
     overflow: hidden;
 }
@@ -215,7 +216,7 @@
     align-items: center;
     gap: 8px;
     background: rgba(255, 255, 255, 0.03);
-    color: #6FA320;
+    color: #111111;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -237,7 +238,7 @@
 .section-title {
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 800;
-    color: white;
+    color: rgb(10, 10, 10);
     margin: 0;
 }
 

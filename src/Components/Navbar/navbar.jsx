@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./navbar.css";
 import Innotech from "../../assets/Innotech.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -61,18 +61,29 @@ const Navbar = () => {
         </div>
 
         <ul className={menuOpen ? "menu active" : "menu"}>
+
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
+<<<<<<< HEAD
           <li><Link to="/services">Services</Link></li>
           <li><Link to="/projects">Projects</Link></li>
           <li><Link to="/portfolio">Portfolio</Link></li>
           <li><Link to="/">Formation</Link></li>
           <li><Link to="/">Contact</Link></li>
+=======
+          <li><Link to="/">Services</Link></li>
+          <li><Link to="/">Projects</Link></li>
+          <li><Link to="/">Portfolio</Link></li>
+          <li><Link to="/formation">Formation</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+>>>>>>> 433ba18e6f01dbda36104a65c76f00fea5624f2d
         </ul>
 
         <div className="nav-right">
           <i className="fa-solid fa-magnifying-glass search-icon"></i>
-          <button className="quote-btn">Devis</button>
+          <Link to="/devis" className="quote-btn" style={{ textDecoration: 'none' }}>
+            Devis <i className="fa-solid fa-arrow-right"></i>
+          </Link>
         </div>
 
       </nav>
