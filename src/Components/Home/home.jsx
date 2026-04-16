@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 
 const slides = [
@@ -23,8 +24,21 @@ const slides = [
 ];
 
 const Home = () => {
+  // Index du slide actif dans le hero.
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
+  // Va au slide suivant en boucle.
+  const goToNext = () => {
+    setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1));
+  };
+
+  // Va au slide precedent en boucle.
+  const goToPrevious = () => {
+    setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1));
+  };
+
+  // Rotation automatique des slides toutes les 4 secondes.
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1));
@@ -51,13 +65,51 @@ const Home = () => {
         <p>{slides[current].subtitle}</p>
 
         <div className="buttons">
-          <button className="btn btn-primary">Découvrir →</button>
-          <button className="btn btn-secondary">Contactez-nous →</button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => navigate("/projects")}
+          >
+            Decouvrir nos projets →
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => navigate("/portfolio")}
+          >
+            Voir le portfolio →
+          </button>
+        </div>
+
+        {/* Navigation manuelle du carrousel */}
+        <div className="hero-controls">
+          <button
+            type="button"
+            className="hero-control-btn"
+            onClick={goToPrevious}
+            aria-label="Slide precedent"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            className="hero-control-btn"
+            onClick={goToNext}
+            aria-label="Slide suivant"
+          >
+            →
+          </button>
         </div>
 
         <div className="scroll-indicator">
           {slides.map((_, i) => (
-            <span key={i} className={i === current ? "active" : ""}></span>
+            <button
+              key={i}
+              type="button"
+              className={`indicator-dot ${i === current ? "active" : ""}`}
+              onClick={() => setCurrent(i)}
+              aria-label={`Aller au slide ${i + 1}`}
+            />
           ))}
         </div>
       </div>

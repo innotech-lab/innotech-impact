@@ -93,18 +93,46 @@
   gap: 8px;
 }
 
-.scroll-indicator span {
-  display: inline-block;
+.indicator-dot {
+  display: inline-flex;
   width: 10px;
   height: 10px;
+  padding: 0;
+  border: none;
   background: rgba(255,255,255,0.4);
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.scroll-indicator span.active {
+.indicator-dot.active {
   background: #6FA320;
+}
+
+/* Boutons de navigation du carrousel */
+.hero-controls {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero-control-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(2, 6, 23, 0.4);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-control-btn:hover {
+  border-color: #6FA320;
+  background: rgba(111, 163, 32, 0.25);
+  transform: translateY(-1px);
 }
 
 /* RESPONSIVE */

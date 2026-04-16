@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from "react-router-dom";
 import './Service.css';
 
 const startupServices = [
@@ -48,7 +49,7 @@ const Service = () => {
               <div className="icon-wrapper">{service.icon}</div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <a href="#contact" className="learn-more">En savoir plus →</a>
+              <Link to="/services" className="learn-more">En savoir plus →</Link>
             </div>
           ))}
         </div>
