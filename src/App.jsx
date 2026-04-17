@@ -9,15 +9,12 @@ import Service from './Components/Service/service'
 import Background from './Components/Background/background'
 import Contact from './Components/Contact/contact'
 import DetailAbout from './page/DetailAbout/DetailAbout'
-<<<<<<< HEAD
 import DetailService from './page/DetailService/DetailService'
 import Portfolio from './page/Portfolio/Portfolio'
 import Projects from './page/Projects/Projects'
-=======
 import Formation from './page/Formation/formation'
 import ContactPage from './page/Contact/contact'
 import Devis from './page/Devis/Devis'
->>>>>>> 433ba18e6f01dbda36104a65c76f00fea5624f2d
 import './App.css'
 
 function App() {
@@ -37,15 +34,12 @@ function App() {
           </>
         } />
         <Route path="/about" element={<DetailAbout />} />
-<<<<<<< HEAD
         <Route path="/services" element={<DetailService />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/portfolio" element={<Portfolio />} />
-=======
         <Route path="/formation" element={<Formation />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/devis" element={<Devis />} />
->>>>>>> 433ba18e6f01dbda36104a65c76f00fea5624f2d
       </Routes>
       <Footer />
     </div>
