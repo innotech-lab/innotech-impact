@@ -70,14 +70,14 @@ const Home = () => {
             className="btn btn-primary"
             onClick={() => navigate("/projects")}
           >
-            Decouvrir nos projets →
+            Decouvrir nos projets <i className="fa-solid fa-arrow-right"></i>
           </button>
           <button
             type="button"
             className="btn btn-secondary"
             onClick={() => navigate("/portfolio")}
           >
-            Voir le portfolio →
+            Voir le portfolio <i className="fa-solid fa-arrow-right"></i>
           </button>
         </div>
 
