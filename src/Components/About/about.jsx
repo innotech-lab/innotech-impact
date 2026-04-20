@@ -4,6 +4,21 @@ import aboutImg from "../../assets/ordi1.png";
 
 const About = () => {
   return (
+    <main>
+        <section className="projects-stats">
+        <div className="stat-card">
+          <h3>0</h3>
+          <p>Projets accompagnes</p>
+        </div>
+        <div className="stat-card">
+          <h3>0</h3>
+          <p>Secteurs couverts</p>
+        </div>
+        <div className="stat-card">
+          <h3>0%</h3>
+          <p>Clients satisfaits</p>
+        </div>
+      </section>
     <section className="about-section">
 
       {/* LEFT IMAGE */}
@@ -42,15 +57,16 @@ const About = () => {
 
         <div className="about-buttons">
           <button className="btn-outline">
-            Services <span>→</span>
+            Services <i className="fa-solid fa-arrow-right"></i>
           </button>
           <button className="btn-filled">
-            Contactez-Nous <span>→</span>
+            Contactez-Nous <i className="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </div>
 
     </section>
+    </main>
   );
 };
 
