@@ -179,6 +179,38 @@ button span {
   margin-left: 10px;
 }
 
+.projects-stats {
+  /* Bandeau des statistiques cles */
+  max-width: 1100px;
+  margin: -45px auto 30px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  position: relative;
+  z-index: 3;
+}
+
+.stat-card {
+  /* Carte individuelle de statistique */
+  background: #111;
+  border: 1px solid #111;
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.9rem;
+}
+
+.stat-card p {
+  margin: 8px 0 0;
+  color: #fff;
+  font-size: 0.94rem;
+}
 /* MEDIUM PHONE (max 768px) */
 @media (max-width: 768px) {
   .about-section {
