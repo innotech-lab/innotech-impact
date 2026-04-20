@@ -18,8 +18,8 @@
   position: absolute;
   inset: 0;
   opacity: 0.22;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: url('../../assets/bac1.png');
+  background-size: 1200px;
 }
 
 .projects-hero-glow {
@@ -191,8 +191,8 @@
 
 .stat-card {
   /* Carte individuelle de statistique */
-  background: #121a2a;
-  border: 1px solid #243047;
+  background: #fff;
+  border: 1px solid #111;
   border-radius: 14px;
   padding: 22px 18px;
   text-align: center;
@@ -206,7 +206,7 @@
 
 .stat-card p {
   margin: 8px 0 0;
-  color: #cbd5e1;
+  color: #111;
   font-size: 0.94rem;
 }
 
