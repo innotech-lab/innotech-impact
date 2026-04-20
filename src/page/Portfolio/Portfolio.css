@@ -18,8 +18,8 @@
   /* Trame de points pour donner de la texture au fond */
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 30px 30px;
+  background-image: url('../../assets/bac1.png');
+  background-size: 1200px;
   opacity: 0.2;
 }
 
