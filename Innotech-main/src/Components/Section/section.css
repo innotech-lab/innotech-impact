@@ -1,0 +1,112 @@
+.banner {
+  overflow: hidden;
+  background: linear-gradient(90deg, #5b861a, #6fa320, #5b861a);
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logos-slide {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+.logo {
+  margin: 0 40px;
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.partner-name-fallback {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Animation défilement */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* =========================
+   GRAND ECRAN (Desktop ≥1200px)
+========================= */
+@media (min-width: 1200px) {
+  .logo {
+    margin: 0 50px;
+    min-width: 220px;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  .logos-slide {
+    animation: scroll 18s linear infinite;
+  }
+}
+
+
+/* =========================
+   ECRAN MOYEN (Tablette 768px — 1199px)
+========================= */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .logo {
+    margin: 0 30px;
+    min-width: 160px;
+  }
+
+  .logo img {
+    width: 70px;
+  }
+
+  .logos-slide {
+    animation: scroll 22s linear infinite;
+  }
+}
+
+
+/* =========================
+   PETIT ECRAN (Mobile ≤767px)
+========================= */
+@media (max-width: 767px) {
+  .banner {
+    padding: 15px 0;
+  }
+
+  .logo {
+    margin: 0 20px;
+    min-width: 130px;
+  }
+
+  .logo img {
+    width: 55px;
+  }
+
+  .logo h3 {
+    font-size: 14px;
+  }
+
+  .logo p {
+    font-size: 12px;
+  }
+
+  .logos-slide {
+    animation: scroll 28s linear infinite;
+  }
+}

@@ -1,0 +1,272 @@
+/* ===== FOOTER BASE ===== */
+.footer {
+  position: relative;
+  background: #000000;
+  color: #c6c5c5;
+  padding: 80px 20px 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* glow effect */
+.footer-glow {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #7FBF2E55, transparent 70%);
+  filter: blur(120px);
+  z-index: 0;
+}
+
+/* container */
+.footer-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 40px;
+}
+/* BRAND CONTAINER */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+/* LOGO IMAGE */
+.brand-logo img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  transition: 0.4s ease;
+}
+
+/* HOVER EFFECT (APPLE STYLE) */
+.brand-logo:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 25px 60px rgba(245, 197, 66, 0.2);
+  border-color: rgba(245, 197, 66, 0.3);
+}
+
+.brand-logo:hover img {
+  transform: scale(1.05);
+}
+
+/* BRAND TEXT */
+.footer-brand p {
+  font-size: 16px;
+  color: #c6c5c5;
+  line-height: 1.6;
+  max-width: 250px;
+}
+
+/* ===== SOCIALS ===== */
+.socials {
+  display: flex;
+  gap: 12px;
+}
+
+.socials a {
+  background: #11111111;
+  padding: 10px;
+  border-radius: 8px;
+  color: #c6c5c5;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  background: #6FA23A;
+  transform: translateY(-3px);
+}
+
+/* ===== COLUMNS ===== */
+.footer-col h4,
+.footer-newsletter h4 {
+  color: #c6c5c5;
+  margin-bottom: 18px;
+  font-size: 18px;
+  position: relative;
+}
+
+.footer-col h4::after,
+.footer-newsletter h4::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: #6FA23A;
+  display: block;
+  margin-top: 6px;
+}
+
+/* links */
+.footer-col a {
+  display: block;
+  color: #c6c5c5;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-col a svg {
+  margin-right: 6px;
+}
+
+.footer-col a:hover {
+  color: #6FA23A;
+  transform: translateX(4px);
+}
+
+/* ===== NEWSLETTER PRO MAX ===== */
+
+/* TEXT */
+.footer-newsletter p {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #c6c5c5;
+  line-height: 1.5;
+}
+
+/* FORM */
+.footer-newsletter form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* INPUT (GLASS STYLE) */
+.footer-newsletter input {
+  flex: 1;
+  padding: 12px 14px;
+  width: 30px;
+  background: #c6c5c5;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+
+  transition: 0.3s ease;
+}
+
+/* INPUT FOCUS GLOW */
+.footer-newsletter input:focus {
+  border-color: #c6c5c5;
+  box-shadow: 0 0 0 3px rgba(245,197,66,0.15);
+  background: #c6c5c5;
+}
+
+/* BUTTON PREMIUM GRADIENT */
+.footer-newsletter button {
+  padding: 12px 18px;
+  border-radius: 3px;
+  border: none;
+
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+
+  background: #6FA23A;
+  box-shadow: 0 10px 20px rgba(245,197,66,0.2);
+
+  transition: 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.footer-newsletter button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(245,197,66,0.35);
+}
+
+/* BUTTON ACTIVE CLICK */
+.footer-newsletter button:active {
+  transform: scale(0.98);
+}
+
+/* SMALL STATUS TEXT */
+.footer-newsletter span {
+  font-size: 18px;
+  color: #FFFFFF;
+  display: block;
+  margin-top: 8px;
+}
+
+/* contact */
+.contact {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #c6c5c5;
+}
+
+
+/* TITLE */
+.contact-box h4 {
+  color: #c6c5c5;
+  font-size: 18px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* CONTACT ITEMS */
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 18px;
+  color: #c6c5c5;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* ICON INSIDE TEXT */
+.contact-item i {
+  color: #6FA23A;
+  font-size: 18px;
+  margin-top: 2px;
+  min-width: 18px;
+}
+
+/* SOCIAL BOX */
+.social-box {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+/* SOCIAL BUTTON STYLE (SQUARE GLASS LIKE IMAGE) */
+.social-box a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+
+  color: #c6c5c5;
+  font-size: 16px;
+
+  transition: 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+/* HOVER EFFECT */
+.social-box a:hover {
+  background: #6FA23A;
+  color: #0a0a0f;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(245, 197, 66, 0.25);
+}
+/* ===== BOTTOM ===== */
+.footer-bottom {
+  margin-top: 60px;
+  border-top: 1px solid #334155;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 18px;
+  color: #c6c5c5;
+}

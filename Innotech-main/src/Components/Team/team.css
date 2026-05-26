@@ -1,0 +1,128 @@
+.team-section {
+  padding: 80px 20px;
+  background: #111111;
+  text-align: center;
+}
+
+.team-section .subtitle {
+  color: #6FA23A;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.team-section .title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #aaaaaa;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.team-section .description {
+  color: #888888;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-card {
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-bottom: 4px solid transparent;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-bottom-color: #6FA23A;
+}
+
+.member-image {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-card:hover .member-image img {
+  transform: scale(1.1);
+}
+
+.social-links {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  background: rgba(111, 162, 58, 0.9);
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  transition: bottom 0.4s ease;
+}
+
+.team-card:hover .social-links {
+  bottom: 0;
+}
+
+.social-links a {
+  color: white;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: scale(1.3);
+}
+
+.member-info {
+  padding: 25px;
+}
+
+.member-info h3 {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.member-info span {
+  color: #6FA23A;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.member-info p {
+  color: #888888;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .team-section .title {
+    font-size: 28px;
+  }
+  
+  .member-image {
+    height: 300px;
+  }
+}

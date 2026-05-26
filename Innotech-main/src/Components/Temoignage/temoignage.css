@@ -1,0 +1,244 @@
+.temoignage {
+  text-align: center;
+  padding: 80px 40px;
+  background: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* TITRES */
+
+.subtitle {
+  color: #6FA23A;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: #aaaaaa;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+/* SLIDER */
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.slider-btn {
+  background: #6FA320;
+  color: #aaaaaa;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(111, 163, 32, 0.4);
+  transition: background 0.2s;
+}
+
+.slider-btn:hover {
+  background: #5a861a;
+}
+
+/* CARDS */
+
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(-60px); opacity: 0; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(60px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(60px); opacity: 0; }
+}
+@keyframes slideInLeft {
+  from { transform: translateX(-60px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.slide-out-left  { animation: slideOutLeft  0.3s ease forwards; }
+.slide-in-right  { animation: slideInRight  0.4s ease forwards; }
+.slide-out-right { animation: slideOutRight 0.3s ease forwards; }
+.slide-in-left   { animation: slideInLeft   0.4s ease forwards; }
+
+.card {
+  padding: 40px 30px;
+  width: 360px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  text-align: left;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-bottom: 4px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-bottom-color: #6FA320;
+}
+
+/* Carte unique : un peu plus large pour occuper l'espace */
+.card-single {
+  width: 450px;
+  margin: 0 auto;
+  border-bottom-color: #6FA320;
+}
+
+/* Styles par défaut pour les éléments de la carte (sur fond blanc) */
+.card .quote { color: #6FA320; }
+.card .text { color: #444444; font-size: 15px; }
+.card h4 { color: #222222; margin: 0; }
+.card span { color: #777777; font-size: 13px; }
+
+/* Carte 2 (Milieu) : Légère mise en avant si on en a 3 */
+.card-2 {
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 15px 40px rgba(111, 163, 32, 0.3);
+}
+
+.card-2:hover {
+  transform: scale(1.08) translateY(-5px);
+}
+
+/* DOTS */
+
+.dots {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dot.active {
+  background: #6FA320;
+}
+
+/* QUOTE */
+
+.quote {
+  font-size: 40px;
+}
+
+/* TEXT */
+
+.text {
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+/* CLIENT */
+
+.client {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.client img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.client h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.client span {
+  font-size: 14px;
+}
+
+/* TABLETTE (max 768px) */
+@media (max-width: 768px) {
+  .temoignage {
+    padding: 60px 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .cards {
+    gap: 20px;
+  }
+
+  .card {
+    width: 280px;
+  }
+}
+
+/* PETIT TELEPHONE (max 480px) */
+@media (max-width: 480px) {
+  .temoignage {
+    padding: 40px 15px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .quote {
+    font-size: 30px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  .client h4 {
+    font-size: 14px;
+  }
+}
