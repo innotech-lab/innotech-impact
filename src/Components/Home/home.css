@@ -1,0 +1,209 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  background: no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+/* OVERLAY VERT TRANSPARENT */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 17, 0.65); /* noir transparent */
+  top: 0;
+  left: 0;
+}
+
+/* CONTENU */
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #e5e5e5;
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+/* BOUTON PRINCIPAL (VERT LOGO) */
+.btn.btn-primary {
+  background-color: #6FA320 !important;
+  color: #ffffff !important;
+  border: 2px solid #6FA320 !important;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px rgba(111, 163, 32, 0.4);
+}
+
+.btn.btn-primary:hover {
+  background-color: #5a861a !important;
+  border-color: #5a861a !important;
+  box-shadow: 0 6px 18px rgba(111, 163, 32, 0.5);
+  transform: translateY(-2px);
+}
+
+/* BOUTON SECONDAIRE (OUTLINE BLANC) */
+.btn.btn-secondary {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  letter-spacing: 0.5px;
+}
+
+.btn.btn-secondary:hover {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  transform: translateY(-2px);
+}
+
+/* INDICATEUR */
+.scroll-indicator {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.indicator-dot {
+  display: inline-flex;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.indicator-dot.active {
+  background: #6FA320;
+}
+
+/* Boutons de navigation du carrousel */
+.hero-controls {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero-control-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(2, 6, 23, 0.4);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-control-btn:hover {
+  border-color: #6FA320;
+  background: rgba(111, 163, 32, 0.25);
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.85rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero p {
+    font-size: 0.75rem;
+  }
+
+  .scroll-indicator {
+    margin-top: 20px;
+  }
+}
+/* COULEURS DU LOGO */
+
+.green {
+  color: #6FA320;
+}
+
+.white {
+  color: #ffffff;
+}
+
+/* TITRE STYLE STARTUP */
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

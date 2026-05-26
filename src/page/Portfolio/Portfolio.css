@@ -1,0 +1,370 @@
+.portfolio-page {
+  /* Conteneur global de la page portfolio */
+  background: #0f0f0f;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* Hero principal avec effets visuels */
+.portfolio-banner {
+  position: relative;
+  background: #020617;
+  padding: 100px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.portfolio-dot-pattern {
+  /* Trame de points pour donner de la texture au fond */
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/bac1.png');
+  background-size: 1200px;
+  opacity: 0.2;
+}
+
+.portfolio-glow {
+  /* Halo lumineux decoratif */
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.portfolio-glow-1 {
+  top: 20%;
+  left: 10%;
+  background: #facc15;
+}
+
+.portfolio-glow-2 {
+  bottom: 20%;
+  right: 10%;
+  background: #3b82f6;
+}
+
+.portfolio-banner-content-wrapper {
+  /* Zone de contenu placee au-dessus des effets de fond */
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.portfolio-banner-animation {
+  /* Animation d'entree verticale du contenu du hero */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-banner-animation.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-badge {
+  /* Badge de contexte affiche en haut du hero */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #facc15;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
+}
+
+.portfolio-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #facc15;
+  border-radius: 50%;
+}
+
+.portfolio-banner-title {
+  font-size: clamp(32px, 8vw, 64px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.portfolio-banner-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.portfolio-intro {
+  /* Bloc d'introduction de la page */
+  max-width: 950px;
+  margin: 42px auto 10px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.portfolio-intro h2 {
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.portfolio-intro p {
+  color: #b8b8b8;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+/* Barre de filtres pour la categorisation des projets */
+.portfolio-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 28px 20px 10px;
+}
+
+.filter-btn {
+  padding: 9px 22px;
+  border-radius: 25px;
+  border: 2px solid #333;
+  background: transparent;
+  color: #ccc;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Outfit, sans-serif;
+}
+
+.filter-btn:hover {
+  border-color: #6fa320;
+  color: #6fa320;
+}
+
+.filter-btn.active {
+  /* Etat visuel du filtre selectionne */
+  background: #6fa320;
+  border-color: #6fa320;
+  color: #fff;
+}
+
+/* Grille responsive de cartes projets */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 30px auto 80px;
+  padding: 0 24px;
+}
+
+/* Carte projet et ses differents sous-elements */
+.portfolio-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(111, 163, 32, 0.2);
+}
+
+.card-img-wrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover .card-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.card-overlay {
+  /* Surcouche legere pour la lisibilite de la categorie */
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.card-category {
+  background: #6fa320;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.card-body p {
+  font-size: 0.88rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.card-tags {
+  /* Groupe de tags technologiques / metier */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: rgba(111, 163, 32, 0.12);
+  color: #6fa320;
+  border: 1px solid rgba(111, 163, 32, 0.3);
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.card-link {
+  margin-top: 16px;
+  border: 1px solid #6fa320;
+  background: transparent;
+  color: #6fa320;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.card-link:hover {
+  background: #6fa320;
+  color: #fff;
+}
+
+.portfolio-modal-backdrop {
+  /* Fond assombri de la modale */
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.portfolio-modal {
+  /* Fenetre modale contenant les details du projet */
+  width: min(760px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #3a3a3a;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.portfolio-modal-image {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.portfolio-modal-content {
+  padding: 24px;
+}
+
+.portfolio-modal-content h3 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+}
+
+.portfolio-modal-content p {
+  color: #b8b8b8;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+/* Ajustements responsives tablette */
+@media (max-width: 900px) {
+  .portfolio-intro h2 {
+    font-size: 1.55rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Ajustements responsives mobile */
+@media (max-width: 580px) {
+  .portfolio-banner {
+    padding: 60px 20px;
+  }
+
+  .portfolio-modal-image {
+    height: 210px;
+  }
+
+  .portfolio-modal-content {
+    padding: 18px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
