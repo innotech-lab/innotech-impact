@@ -1,0 +1,80 @@
+/*
+  Bascule de langue.
+
+  Deux cases dans un cadre filet, et une pastille encrée qui glisse sous le
+  libellé actif. Le libellé actif passe en papier sur l'encre : le contraste
+  fait l'état, la pastille ne fait que le déplacement.
+*/
+
+.lang-toggle {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  isolation: isolate;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+/* La pastille : moitié de la largeur, translatée d'une case en anglais. */
+.lang-toggle__pill {
+  position: absolute;
+  z-index: -1;
+  inset: 0 50% 0 0;
+  background: var(--ink);
+  transition: transform 420ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.lang-toggle[data-active="en"] .lang-toggle__pill {
+  transform: translateX(100%);
+}
+
+.lang-toggle__option {
+  /* 2.1rem de haut plus le padding du parent : la cible dépasse 24 px. */
+  min-width: 2.5rem;
+  padding: 0.5rem 0.15rem;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font: 800 0.72rem/1 var(--mono);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: color 320ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.lang-toggle__option[aria-pressed="true"] {
+  color: var(--paper);
+}
+.lang-toggle__option[aria-pressed="false"]:hover {
+  color: var(--ink);
+}
+
+/* Dans le pied de page, le cadre est sur fond nuit : les rôles s'inversent. */
+.lang-toggle--footer {
+  border-color: rgba(244, 245, 237, 0.28);
+  background: transparent;
+}
+.lang-toggle--footer .lang-toggle__pill {
+  background: var(--lime);
+}
+.lang-toggle--footer .lang-toggle__option {
+  color: #b9c4bf;
+}
+.lang-toggle--footer .lang-toggle__option[aria-pressed="true"] {
+  color: var(--ink);
+}
+.lang-toggle--footer .lang-toggle__option[aria-pressed="false"]:hover {
+  color: var(--paper);
+}
+
+/* Sur mobile le toggle sort du panneau dépliant et se pose près du menu : la
+   langue se change sans ouvrir la navigation. */
+@media (max-width: 900px) {
+  .lang-toggle--nav {
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-toggle__pill {
+    transition: none;
+  }
+}

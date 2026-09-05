@@ -1,114 +1,135 @@
-import React, { useEffect, useState } from "react";
+import { createElement } from "react";
+import {
+  ArrowRight,
+  Boxes,
+  Code2,
+  GraduationCap,
+  UsersRound,
+} from "lucide-react";
 import { Link } from "react-router-dom";
-import Service from "../../Components/Service/service";
-import "./DetailService.css";
-
-// Etapes de collaboration avec les clients.
-const processSteps = [
+import PageMeta from "../../Components/PageMeta/PageMeta";
+import { useT } from "../../i18n";
+const services = [
   {
-    id: 1,
-    title: "Cadrage",
-    desc: "Ateliers pour comprendre le contexte, les objectifs et les priorites.",
+    title: "Produits & plateformes",
+    text: "Nous cadrons, concevons et développons les produits web et mobiles qui font avancer votre activité.",
+    icon: Code2,
   },
   {
-    id: 2,
-    title: "Conception",
-    desc: "Prototype, architecture et plan d'execution avec jalons de livraison.",
+    title: "Systèmes pour les équipes",
+    text: "Des outils opérationnels plus simples : données, parcours internes et services connectés.",
+    icon: Boxes,
   },
   {
-    id: 3,
-    title: "Production",
-    desc: "Developpement agile, tests qualite et iterations rapides.",
+    title: "Capacité numérique",
+    text: "Ateliers et accompagnement pour que vos équipes comprennent, adoptent et prolongent la solution.",
+    icon: UsersRound,
   },
   {
-    id: 4,
-    title: "Evolution",
-    desc: "Mesure des resultats, optimisation continue et support post-lancement.",
+    title: "Programmes STEM",
+    text: "Des expériences pratiques pour apprendre à chercher, prototyper et créer avec la technologie.",
+    icon: GraduationCap,
   },
 ];
-
-// Questions frequentes sur les services.
-const faqList = [
-  {
-    id: "q1",
-    question: "En combien de temps un projet peut demarrer ?",
-    answer:
-      "En general, le cadrage initial prend entre 3 et 7 jours selon la complexite. Une fois valide, la production peut commencer immediatement.",
-  },
-  {
-    id: "q2",
-    question: "Travaillez-vous avec des startups et des entreprises etablies ?",
-    answer:
-      "Oui. Nous adaptons notre methode a votre niveau de maturite, du MVP rapide a des plateformes plus complexes.",
-  },
-  {
-    id: "q3",
-    question: "Proposez-vous un accompagnement apres livraison ?",
-    answer:
-      "Oui, avec des offres de maintenance evolutive, monitoring, optimisations et accompagnement des equipes.",
-  },
+const process = [
+  "Comprendre le terrain",
+  "Choisir une première version utile",
+  "Construire avec des retours courts",
+  "Transmettre et faire évoluer",
 ];
-
-const DetailService = () => {
-  const [activeStep, setActiveStep] = useState(processSteps[0].id);
-  const [openFaqId, setOpenFaqId] = useState(faqList[0].id);
-  const [isHeroVisible, setIsHeroVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsHeroVisible(true), 60);
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function DetailService() {
+  const t = useT();
   return (
-    <main className="detail-service-page">
-      {/* Hero principal de la page services */}
-      <section className="detail-service-hero">
-        <div className="detail-service-pattern" />
-        <div className="detail-service-glow detail-service-glow-left" />
-        <div className="detail-service-glow detail-service-glow-right" />
-        <div className="detail-service-hero-content">
-          <span className={`detail-service-badge service-hero-word ${isHeroVisible ? "is-visible delay-1" : ""}`}>
-            <span className="badge-dot" />
-            Expertises Innotech
-          </span>
-          <h1 className={`service-hero-word ${isHeroVisible ? "is-visible delay-2" : ""}`}>
-            Des services pensés pour accelerer notre croissance
+    <>
+      <PageMeta
+        title="Solutions"
+        description="Stratégie, design et ingénierie pour transformer une intention claire en une solution réellement adoptée."
+        path="/services"
+      />
+      <section className="page-hero">
+        <div className="shell">
+          <p className="eyebrow reveal">{t("Solutions Innotech")}</p>
+          <h1 className="reveal reveal--2">
+            {t(
+              "Des systèmes qui font avancer les personnes qui les utilisent.",
+            )}
           </h1>
-          <p className={`service-hero-word ${isHeroVisible ? "is-visible delay-3" : ""}`}>
-            Nous combinons strategie, design et ingenierie pour concevoir des solutions
-            digitales durables qui creent de la valeur.
+          <p className="reveal reveal--3">
+            {t(
+              "Nous associons stratégie, design et ingénierie pour transformer une intention claire en une solution réellement adoptée.",
+            )}
           </p>
-          <div className={`detail-service-hero-actions service-hero-word ${isHeroVisible ? "is-visible delay-4" : ""}`}>
-            <Link to="/contact" className="hero-btn hero-btn-primary">
-              Demarrer une mission
-            </Link>
-            <Link to="/projects" className="hero-btn hero-btn-secondary">
-              Voir nos projets
-            </Link>
+          <div className="page-hero__line" />
+        </div>
+      </section>
+      <section className="section">
+        <div className="shell">
+          <div data-reveal="rise" className="section-head">
+            <div>
+              <p className="eyebrow">{t("L’offre")}</p>
+              <h2>{t("Une réponse, puis une capacité.")}</h2>
+            </div>
+            <p className="section-copy">
+              {t(
+                "Chaque intervention laisse quelque chose de concret : un produit, un outil, une méthode ou de nouvelles compétences.",
+              )}
+            </p>
+          </div>
+          <div data-reveal="rise" data-reveal-stagger className="service-map">
+            <div className="service-map__title">
+              {t(
+                "Ce qui devient possible quand la technique sert le contexte.",
+              )}
+            </div>
+            <div>
+              {services.map(({ title, text, icon }, i) => (
+                <article className="service-map__row" key={title}>
+                  <span>0{i + 1}</span>
+                  <h3>{t(title)}</h3>
+                  {createElement(icon, { size: 22 })}
+                  <p>{t(text)}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
-      <Service />
-
-      {/* CTA final */}
-      <section className="service-cta">
-        <h2>Parlons de votre prochaine solution digitale</h2>
-        <p>
-          Nous pouvons cadrer votre projet rapidement et proposer un plan d'action
-          adapte a vos objectifs business.
-        </p>
-        <div className="service-cta-actions">
-          <Link to="/" className="cta-btn cta-btn-primary">
-            Prendre rendez-vous
-          </Link>
-          <Link to="/portfolio" className="cta-btn cta-btn-outline">
-            Explorer le portfolio
+      <section className="section section--dark">
+        <div className="shell">
+          <div data-reveal="rise" className="section-head">
+            <div>
+              <p className="eyebrow">{t("Notre manière de faire")}</p>
+              <h2>
+                {t("Un mouvement lisible, du premier échange à l’autonomie.")}
+              </h2>
+            </div>
+          </div>
+          <div data-reveal="rise" data-reveal-stagger className="process">
+            {process.map((title, i) => (
+              <article key={title}>
+                <span>0{i + 1}</span>
+                <h3>{t(title)}</h3>
+                <p>
+                  {t(
+                    "Une étape tangible, partagée et utile pour prendre la décision suivante.",
+                  )}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="home-close">
+        <div data-reveal="wipe" className="shell home-close__inner">
+          <p className="eyebrow">{t("Commencer simplement")}</p>
+          <h2>
+            {t("Votre contexte mérite mieux qu’une solution toute faite.")}
+          </h2>
+          <Link className="button button--lime" to="/devis">
+            {t("Parler du projet")} <ArrowRight size={18} />
           </Link>
         </div>
       </section>
-    </main>
+    </>
   );
-};
-
-export default DetailService;
+}

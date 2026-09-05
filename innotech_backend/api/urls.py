@@ -50,59 +50,50 @@ TABLEAU RÉCAPITULATIF DES ENDPOINTS DE L'API :
   GET      | /api/team-members/               | Liste des membres de l'équipe
 """
 
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
+
 from .views import (
-    ServiceViewSet, TestimonialViewSet, ContactMessageViewSet,
-    ProjectViewSet, FormationViewSet, QuoteRequestViewSet,
-    CompanyValueViewSet, HeroSlideViewSet, PartnerViewSet,
-    CompanyInfoViewSet, NewsletterSubscriberViewSet,
-    BackgroundSectionViewSet, TeamMemberViewSet,
-    ProcessStepViewSet, FAQViewSet
+    BackgroundSectionViewSet,
+    CompanyInfoViewSet,
+    CompanyValueViewSet,
+    ContactMessageViewSet,
+    FAQViewSet,
+    FormationViewSet,
+    HeroSlideViewSet,
+    NewsletterSubscriberViewSet,
+    PartnerViewSet,
+    ProcessStepViewSet,
+    ProjectViewSet,
+    QuoteRequestViewSet,
+    ServiceViewSet,
+    TeamMemberViewSet,
+    TestimonialViewSet,
 )
 
-# =================================================================
-#   CRÉATION DU ROUTER AUTOMATIQUE
-# =================================================================
-# DefaultRouter crée aussi une page d'accueil interactive à l'URL /api/
-# qui liste toutes les routes disponibles. Très pratique pour tester !
-# Accès : http://127.0.0.1:8000/api/
+# Les modèles, sérialiseurs et ViewSets existaient déjà ; seules les routes
+# manquaient, si bien que l'admin permettait de saisir une équipe ou des
+# partenaires sans qu'aucune URL ne les expose au site.
 router = DefaultRouter()
+router.register("services", ServiceViewSet, basename="service")
+router.register("projects", ProjectViewSet, basename="project")
+router.register("formations", FormationViewSet, basename="formation")
+router.register("team", TeamMemberViewSet, basename="team-member")
+router.register("partners", PartnerViewSet, basename="partner")
+router.register("testimonials", TestimonialViewSet, basename="testimonial")
+router.register("values", CompanyValueViewSet, basename="company-value")
+router.register("process", ProcessStepViewSet, basename="process-step")
+router.register("faq", FAQViewSet, basename="faq")
+router.register("hero-slides", HeroSlideViewSet, basename="hero-slide")
+router.register("company", CompanyInfoViewSet, basename="company-info")
+router.register("backgrounds", BackgroundSectionViewSet, basename="background")
 
-# =================================================================
-#   ENREGISTREMENT DES ROUTES
-# =================================================================
-# Syntaxe : router.register(r'<prefix>', <ViewSet>)
-#   - prefix : le segment d'URL (sans slash)
-#   - ViewSet : la classe qui gère les requêtes
+# Les trois formulaires publics. En écriture seule : le site poste, il ne lit
+# jamais les messages reçus.
+router.register("contact", ContactMessageViewSet, basename="contact")
+router.register("quotes", QuoteRequestViewSet, basename="quote")
+router.register("newsletter", NewsletterSubscriberViewSet, basename="newsletter")
 
-# ── Données du site (lecture seule) ──────────────────────────────
-router.register(r'services',          ServiceViewSet)          # Nos services
-router.register(r'testimonials',      TestimonialViewSet)      # Témoignages clients
-router.register(r'projects',          ProjectViewSet)          # Portfolio de projets
-router.register(r'formations',        FormationViewSet)        # Formations proposées
-router.register(r'company-values',    CompanyValueViewSet)     # Valeurs de l'entreprise
-router.register(r'hero-slides',       HeroSlideViewSet)        # Slides de la page d'accueil
-router.register(r'partners',          PartnerViewSet)          # Logos des partenaires
-router.register(r'company-info',      CompanyInfoViewSet)      # Infos de contact globales
-router.register(r'background-section',BackgroundSectionViewSet)# Section vidéo/image
-router.register(r'team-members',      TeamMemberViewSet)       # Équipe
-router.register(r'process-steps',     ProcessStepViewSet)      # Étapes de collaboration
-router.register(r'faqs',              FAQViewSet)              # FAQs
-
-# ── Formulaires (lecture + écriture) ─────────────────────────────
-router.register(r'contact',           ContactMessageViewSet)   # Formulaire de contact
-router.register(r'quotes',            QuoteRequestViewSet)     # Formulaire de devis
-router.register(r'newsletter',        NewsletterSubscriberViewSet) # Inscription newsletter
-
-
-# =================================================================
-#   ACTIVATION DES ROUTES DANS DJANGO
-# =================================================================
 urlpatterns = [
-    # include(router.urls) ajoute toutes les routes générées par le router
-    # à la liste urlpatterns de ce fichier.
-    # Ce fichier est lui-même inclus dans core_project/urls.py sous le préfixe 'api/'
-    # donc toutes les routes seront préfixées par /api/
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]

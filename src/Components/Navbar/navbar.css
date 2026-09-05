@@ -1,181 +1,352 @@
-/* ===== HEADER ===== */
-.header {
-  width: 100%;
-  font-family: sans-serif;
-}
+/*
+  En-tête.
 
-/* TOP HEADER */
-.top-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: #6FA23A;
-}
+  La barre d'information qui surmontait la navigation a été retirée : elle
+  répétait une adresse et un e-mail déjà présents dans le pied de page et sur la
+  page contact, en 10,9 px, au-dessus de la marque. L'en-tête tient maintenant
+  sur une seule ligne.
+*/
 
-/* LOGO CONTAINER */
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-/* LOGO IMAGE */
-.logo img {
-  width: 220px;      /* ubunini bwa desktop */
-  height: auto;
-  object-fit: contain;
-  max-width: 100%;
-  transition: transform 0.3s ease;
-}
-
-/* HOVER EFFECT (pro look) */
-.logo img:hover {
-  transform: scale(1.05);
-}
-
-.contact-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.divider {
-  width: 1px;
-  height: 40px;
-  background: #ddd;
-}
-
-/* ===== NAVBAR ===== */
-
-.navbar {
-  background: #0c1b2a;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
+.site-header {
   position: relative;
+  z-index: 10;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
 }
 
-.menu {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-}
-
-.menu li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.nav-right {
+.site-nav {
+  min-height: 5.3rem;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.6rem;
 }
 
-.quote-btn {
-  background: linear-gradient(135deg, #6aa121, #8cc63f);
-  border: none;
-  padding: 10px 24px;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
+/* ───────────────────────────────────────────────────────────────── marque ── */
+
+.brand {
+  /* Pousse la navigation, la bascule de langue et le menu vers la droite. */
+  margin-right: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding-block: 0.25rem;
+}
+
+.brand__mark {
+  width: auto;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  overflow: visible;
+  fill: none;
+  stroke: var(--lime-deep);
+  stroke-width: 6;
+  stroke-linejoin: round;
+  transition: stroke 320ms var(--ease-out);
+}
+
+/* Le pilier — la barre verticale au centre du triangle — se soulève d'un cran
+   au survol : le signal se met en marche. Les deux autres tracés restent fixes
+   pour que le mouvement se lise sur un seul élément. */
+.brand__pillar {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  transition: transform 420ms var(--ease-out);
+}
+
+.brand__ground {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 420ms var(--ease-out) 60ms;
+}
+
+.brand:hover .brand__mark,
+.brand:focus-visible .brand__mark {
+  stroke: var(--lime);
+}
+.brand:hover .brand__pillar {
+  transform: translateY(-8%) scaleY(1.1);
+}
+.brand:hover .brand__ground {
+  transform: scaleX(1.08);
+}
+
+/* Le nom composé dans la typographie du site plutôt qu'aplati dans une image :
+   net à tout zoom, et il suit la police du reste de l'interface. */
+.brand__word {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.32em;
+  font: 800 0.98rem/1 var(--body);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.brand__word b {
+  color: var(--lime-deep);
+  font-weight: inherit;
+  transition: color 320ms var(--ease-out);
+}
+.brand__word i {
+  color: var(--ink);
+  font-style: normal;
+  font-weight: inherit;
+}
+.brand:hover .brand__word b {
+  color: var(--lime);
+}
+
+/* ──────────────────────────────────────────────────────────── liens de nav ── */
+
+.site-nav__links {
   display: flex;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(106, 161, 33, 0.3);
-  transition: all 0.3s ease;
+  gap: 1.7rem;
+  font-size: 0.84rem;
+  font-weight: 800;
 }
 
-.quote-btn:hover {
+/*
+  Le libellé roule.
+
+  Deux copies identiques sont empilées dans une fenêtre de la hauteur d'une
+  ligne ; au survol la pile monte d'un cran, la seconde copie prend la place de
+  la première. Le mouvement est vertical, comme un afficheur qui change de
+  valeur — cohérent avec l'idée de signal transmis.
+*/
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.45rem;
+}
+
+.nav-link__roll {
+  display: block;
+  height: 1.15em;
+  overflow: hidden;
+}
+.nav-link__roll > span {
+  display: block;
+  height: 1.15em;
+  line-height: 1.15em;
+  transition: transform 420ms var(--ease-out);
+}
+.nav-link:hover .nav-link__roll > span,
+.nav-link:focus-visible .nav-link__roll > span {
+  transform: translateY(-1.15em);
+}
+/* La copie qui arrive est déjà à la couleur d'accent : le changement se fait
+   pendant le roulement, pas après. */
+.nav-link__roll > span:last-child {
+  color: var(--lime-deep);
+}
+
+/* Le trait se dessine sous le lien, et reste pour la route active. */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.05rem;
+  height: 2px;
+  background: var(--lime-deep);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 320ms var(--ease-out);
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ───────────────────────────────────────────────────── appel à l'action ── */
+
+/*
+  Un éclat traverse le bouton au survol : une bande claire en diagonale qui
+  balaie la surface une fois. C'est le signal qui passe — le même geste que la
+  ligne du héros, ramené à l'échelle d'un bouton.
+*/
+.nav-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    background 320ms var(--ease-out),
+    transform 320ms var(--ease-out);
+}
+.nav-cta::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(244, 245, 237, 0.22),
+    transparent
+  );
+  transform: translateX(-160%) skewX(-18deg);
+  transition: transform 720ms var(--ease-out);
+}
+.nav-cta:hover {
+  background: var(--lime-deep);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(106, 161, 33, 0.5);
-  background: linear-gradient(135deg, #74b325, #9ee045);
+}
+.nav-cta:hover::before {
+  transform: translateX(360%) skewX(-18deg);
+}
+.nav-cta svg {
+  transition: transform 320ms var(--ease-out);
+}
+.nav-cta:hover svg {
+  transform: translate(2px, -2px);
 }
 
-.quote-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 8px rgba(106, 161, 33, 0.4);
-}
-
-.quote-btn i {
-  transition: transform 0.3s ease;
-  font-size: 0.9em;
-}
-
-.quote-btn:hover i {
-  transform: translateX(4px);
-}
-
-/* ===== HAMBURGER ===== */
-
-.hamburger {
+.menu-trigger {
   display: none;
-  font-size: 22px;
+  background: transparent;
+  color: var(--ink);
   cursor: pointer;
 }
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-@media (max-width: 600px) {
-  .logo {
-    justify-content: center;
-  }
 
-  .logo img {
-    width: 180px; /* mobile size */
+/* ────────────────────────────────────────────────────────────── mobile ── */
+
+@media (max-width: 900px) {
+  .site-nav {
+    min-height: 4.5rem;
+  }
+  .brand__mark {
+    height: 2.1rem;
+  }
+  .brand__word {
+    font-size: 0.88rem;
+  }
+  .menu-trigger {
+    display: grid;
+    place-items: center;
+    padding: 0.55rem;
+  }
+  .site-nav__links {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: none;
+    align-items: stretch;
+    gap: 0;
+    padding: 1rem 16px 1.5rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 18px 25px rgba(7, 16, 18, 0.1);
+  }
+  .site-nav__links.is-open {
+    display: grid;
+  }
+  /* Le panneau se déplie et les entrées arrivent l'une après l'autre. */
+  .site-nav__links.is-open > * {
+    animation: nav-item-in 420ms var(--ease-out) both;
+  }
+  .site-nav__links.is-open > *:nth-child(2) {
+    animation-delay: 45ms;
+  }
+  .site-nav__links.is-open > *:nth-child(3) {
+    animation-delay: 90ms;
+  }
+  .site-nav__links.is-open > *:nth-child(4) {
+    animation-delay: 135ms;
+  }
+  .site-nav__links.is-open > *:nth-child(5) {
+    animation-delay: 180ms;
+  }
+  .site-nav__links.is-open > *:nth-child(6) {
+    animation-delay: 225ms;
+  }
+  .nav-link {
+    padding: 0.85rem 0;
+  }
+  /* Le roulement n'a pas de sens au doigt : sur mobile, l'état actif suffit. */
+  .nav-link__roll {
+    height: auto;
+    overflow: visible;
+  }
+  .nav-link__roll > span:last-child {
+    display: none;
+  }
+  .nav-link::after {
+    display: none;
+  }
+  .nav-link.active {
+    color: var(--lime-deep);
+  }
+  .nav-cta {
+    margin-top: 0.7rem;
+    justify-content: space-between;
+    padding: 1rem;
   }
 }
 
-@media (max-width: 992px) {
-
-  .contact-info {
-    display: none;
+@keyframes nav-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
   }
-
-  .hamburger {
-    display: block;
-    color: white;
-    font-size: 24px;
+  to {
+    opacity: 1;
+    transform: none;
   }
+}
 
-  /* MENU HIDDEN BY DEFAULT */
-  .menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #0c1b2a;
-
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0;
-
-    display: none;   /* IMPORTANT */
-    z-index: 999;
+/* Sur les très petits écrans le nom reste : il rétrécit avec la marque plutôt
+   que de disparaître. Un logo seul, sans le nom, ne dit pas qui parle. */
+@media (max-width: 430px) {
+  .site-nav {
+    gap: 0.75rem;
   }
-
-  /* SHOW WHEN ACTIVE */
-  .menu.active {
-    display: flex;
+  .brand {
+    gap: 0.5rem;
   }
-
-  .nav-right {
-    display: none;
+  .brand__mark {
+    height: 1.85rem;
   }
+  .brand__word {
+    font-size: 0.78rem;
+    gap: 0.26em;
+    letter-spacing: 0.01em;
+  }
+}
 
-  .navbar {
-    position: relative; /* VERY IMPORTANT */
+@media (max-width: 340px) {
+  .brand__mark {
+    height: 1.6rem;
+  }
+  .brand__word {
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link__roll > span,
+  .brand__pillar,
+  .brand__ground,
+  .nav-cta::before,
+  .site-nav__links.is-open > * {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+  .nav-link:hover .nav-link__roll > span {
+    transform: none;
+  }
+  /* Sans mouvement, le survol reste signalé par la couleur et le trait. */
+  .nav-link:hover {
+    color: var(--lime-deep);
   }
 }

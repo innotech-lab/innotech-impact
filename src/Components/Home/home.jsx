@@ -1,120 +1,235 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { createElement } from "react";
+import {
+  ArrowDownRight,
+  ArrowRight,
+  BookOpen,
+  Code2,
+  GraduationCap,
+  Layers3,
+  MoveUpRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import hero from "../../assets/innotech-lab-hero.webp";
 import "./home.css";
-
-const slides = [
+import PageMeta from "../PageMeta/PageMeta";
+import { useT } from "../../i18n";
+const offers = [
   {
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-    title: "INNOTECH IMPACT",
-    subtitle:
-      "Innovation pour tous — Nous aidons les entreprises et les jeunes innovateurs à construire le futur numérique.",
+    icon: Code2,
+    title: "Logiciels qui déplacent le réel",
+    text: "Produits web, mobile et outils métiers construits avec vos équipes — de l’idée au déploiement.",
+    to: "/services",
+    action: "Explorer les solutions",
   },
   {
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c",
-    title: "Innovation & Technologie",
-    subtitle:
-      "Construisons ensemble des solutions intelligentes adaptées au monde moderne.",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-    title: "Transform Your Vision",
-    subtitle:
-      "Nous transformons vos idées en projets réels grâce à la technologie.",
+    icon: GraduationCap,
+    title: "STEM pour celles et ceux qui bâtissent demain",
+    text: "Des parcours pratiques pour apprendre, expérimenter et transformer une curiosité en capacité.",
+    to: "/formation",
+    action: "Découvrir la STEM Academy",
   },
 ];
-
-const Home = () => {
-  // Index du slide actif dans le hero.
-  const [current, setCurrent] = useState(0);
-  const navigate = useNavigate();
-
-  // Va au slide suivant en boucle.
-  const goToNext = () => {
-    setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1));
-  };
-
-  // Va au slide precedent en boucle.
-  const goToPrevious = () => {
-    setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1));
-  };
-
-  // Rotation automatique des slides toutes les 4 secondes.
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1));
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, []);
-
+const signals = [
+  "Conception produit",
+  "Développement logiciel",
+  "Formation STEM",
+  "Partenariats d’impact",
+];
+export default function Home() {
+  const t = useT();
   return (
-    <section
-      className="hero"
-      style={{ backgroundImage: `url(${slides[current].image})` }}
-    >
-      <div className="overlay"></div>
-
-      <div className="hero-content">
-
-        {/* TITRE AVEC COULEUR LOGO */}
-        <h1>
-          <span className="green">INNOTECH</span>{" "}
-          <span className="white">IMPACT</span>
-        </h1>
-
-        <p>{slides[current].subtitle}</p>
-
-        <div className="buttons">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => navigate("/projects")}
-          >
-            Decouvrir nos projets <i className="fa-solid fa-arrow-right"></i>
-          </button>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => navigate("/portfolio")}
-          >
-            Voir le portfolio <i className="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-
-        {/* Navigation manuelle du carrousel */}
-        <div className="hero-controls">
-          <button
-            type="button"
-            className="hero-control-btn"
-            onClick={goToPrevious}
-            aria-label="Slide precedent"
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            className="hero-control-btn"
-            onClick={goToNext}
-            aria-label="Slide suivant"
-          >
-            →
-          </button>
-        </div>
-
-        <div className="scroll-indicator">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              className={`indicator-dot ${i === current ? "active" : ""}`}
-              onClick={() => setCurrent(i)}
-              aria-label={`Aller au slide ${i + 1}`}
+    <>
+      <PageMeta
+        title="Innotech Impact"
+        description="Innotech Impact conçoit des solutions logicielles et développe des expériences d’apprentissage STEM au Burundi."
+        path="/"
+      />
+      <section className="landing-hero">
+        <div className="shell landing-hero__grid">
+          <div className="landing-hero__copy">
+            <p className="eyebrow reveal">{t("Innotech Impact · Burundi")}</p>
+            <h1 className="reveal reveal--2">
+              {t("La technologie devient utile quand elle circule.")}
+            </h1>
+            <p className="landing-hero__lede reveal reveal--3">
+              {t(
+                "Nous créons des solutions logicielles pour les organisations et des expériences STEM pour les personnes qui feront avancer le pays.",
+              )}
+            </p>
+            <div className="landing-hero__actions reveal reveal--3">
+              <Link className="button button--lime" to="/devis">
+                {t("Démarrer un projet")} <MoveUpRight size={18} />
+              </Link>
+              <Link className="button button--line" to="/formation">
+                {t("Voir les formations")} <ArrowDownRight size={18} />
+              </Link>
+            </div>
+          </div>
+          <div className="landing-hero__image">
+            <img
+              src={hero}
+              alt={t(
+                "Jeunes innovateurs travaillant dans un laboratoire numérique",
+              )}
+              width="1672"
+              height="941"
+              fetchPriority="high"
+              decoding="async"
             />
-          ))}
+            <span className="hero-orbit hero-orbit--one" />
+            <span className="hero-orbit hero-orbit--two" />
+            <p>
+              {t("Un studio de produits")}
+              <br />
+              {t("et de transmission.")}
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+        <ul
+          data-reveal="rise"
+          data-reveal-stagger
+          className="shell signal-strip"
+          aria-label={t("Domaines d’intervention")}
+        >
+          {signals.map((item, i) => (
+            <li key={item}>
+              <i aria-hidden="true">0{i + 1}</i>
+              {t(item)}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="section">
+        <div className="shell">
+          <div data-reveal="rise" className="section-head">
+            <div>
+              <p className="eyebrow">{t("Deux points d’entrée")}</p>
+              <h2>
+                {t("Venir avec une ambition. Repartir avec de la capacité.")}
+              </h2>
+            </div>
+            <p className="section-copy">
+              {t(
+                "Notre modèle relie une demande concrète à une compétence durable : nous aidons à construire aujourd’hui et à transmettre ce qui permettra de construire demain.",
+              )}
+            </p>
+          </div>
+          <div data-reveal="rise" data-reveal-stagger className="pathways">
+            {offers.map(({ icon, title, text, to, action }, index) => (
+              <article key={title} className="pathway">
+                <div className="pathway__index">0{index + 1}</div>
+                {createElement(icon, { size: 33 })}
+                <h3>{t(title)}</h3>
+                <p>{t(text)}</p>
+                <Link className="text-link" to={to}>
+                  {t(action)}
+                  <ArrowRight size={17} />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section section--dark impact-block">
+        <div data-reveal="rise" className="shell impact-block__grid">
+          <div>
+            <p className="eyebrow">{t("Le geste Innotech")}</p>
+            <h2>
+              {t(
+                "Pas une promesse d’innovation. Un chemin pour la rendre praticable.",
+              )}
+            </h2>
+          </div>
+          <div
+            data-reveal="rise"
+            data-reveal-stagger
+            className="impact-block__list"
+          >
+            <p>
+              <span>01</span>
+              {t("Écouter le terrain avant de dessiner la solution.")}
+            </p>
+            <p>
+              <span>02</span>
+              {t(
+                "Construire avec des étapes visibles et des décisions partagées.",
+              )}
+            </p>
+            <p>
+              <span>03</span>
+              {t("Transmettre les méthodes, pas seulement livrer un résultat.")}
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="shell">
+          <div data-reveal="rise" className="section-head">
+            <div>
+              <p className="eyebrow">{t("Ce que nous faisons")}</p>
+              <h2>{t("Des briques digitales, pensées pour durer.")}</h2>
+            </div>
+            <Link className="text-link" to="/services">
+              {t("Voir toutes nos expertises")} <ArrowRight size={17} />
+            </Link>
+          </div>
+          <div data-reveal="rise" data-reveal-stagger className="feature-grid">
+            <article className="feature">
+              <span className="feature-icon">
+                <Layers3 />
+              </span>
+              <div>
+                <h3>{t("Produits numériques")}</h3>
+                <p>
+                  {t(
+                    "Plateformes, applications et parcours digitaux conçus autour d’un besoin réel.",
+                  )}
+                </p>
+              </div>
+            </article>
+            <article className="feature">
+              <span className="feature-icon">
+                <BookOpen />
+              </span>
+              <div>
+                <h3>{t("Learning by building")}</h3>
+                <p>
+                  {t(
+                    "Des formats STEM orientés pratique, prototypes et autonomie.",
+                  )}
+                </p>
+              </div>
+            </article>
+            <article className="feature">
+              <span className="feature-icon">
+                <Code2 />
+              </span>
+              <div>
+                <h3>{t("Renforcement d’équipes")}</h3>
+                <p>
+                  {t(
+                    "Ateliers, accompagnement et langage commun pour faire progresser les équipes.",
+                  )}
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section className="home-close">
+        <div data-reveal="wipe" className="shell home-close__inner">
+          <p className="eyebrow">{t("La prochaine étape")}</p>
+          <h2>{t("Une idée à rendre concrète ?")}</h2>
+          <p>
+            {t(
+              "Parlons de votre contexte, de ce qu’il faut résoudre et de la bonne première étape.",
+            )}
+          </p>
+          <Link to="/contact" className="button button--lime">
+            {t("Écrire à l’équipe")} <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
+    </>
   );
-};
-
-export default Home;
+}

@@ -1,0 +1,338 @@
+/*
+  Le ruban d'équipe et de partenaires.
+
+  Une grille à filets range des cellules ; un ruban fait circuler des personnes.
+  Chaque carte porte sa propre bordure et son propre survol, au lieu d'être une
+  case dans un tableau partagé — c'est ce qui la rend autonome.
+*/
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.5rem;
+  /* Les cartes se dissipent aux bords au lieu d'être coupées net. Un masque
+     plutôt que deux dégradés posés par-dessus : il fonctionne aussi bien sur le
+     papier que sur le fond nuit, sans couleur à recopier. */
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+}
+
+.marquee__track {
+  display: flex;
+  gap: var(--marquee-gap, 1.4rem);
+  width: max-content;
+  animation: marquee-drift var(--marquee-duration, 60s) linear infinite;
+}
+
+.marquee__group {
+  display: flex;
+  gap: var(--marquee-gap, 1.4rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+  La piste contient exactement deux copies de la liste. Reculer d'une copie plus
+  un intervalle remet la seconde là où était la première : la boucle n'a pas de
+  couture. `-50%` vaut une copie plus un demi-intervalle, d'où la correction.
+*/
+@keyframes marquee-drift {
+  to {
+    transform: translateX(calc(-50% - var(--marquee-gap, 1.4rem) / 2));
+  }
+}
+
+.marquee[data-reverse] .marquee__track {
+  animation-direction: reverse;
+}
+
+/* Pause au survol, au focus clavier, et sur demande explicite. */
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track,
+.marquee[data-paused] .marquee__track {
+  animation-play-state: paused;
+}
+
+/* Trop peu de cartes pour remplir la largeur : le ruban tournerait dans le
+   vide. Il redevient une rangée, centrée, sans animation. */
+.marquee--static {
+  mask-image: none;
+}
+.marquee--static .marquee__track {
+  animation: none;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-inline: 16px;
+}
+.marquee--static .marquee__group {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.marquee__controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.1rem;
+}
+
+.marquee__pause {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.2rem;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font: 500 0.72rem var(--mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 260ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.marquee__pause:hover {
+  color: var(--ink);
+}
+.section--dark .marquee__pause {
+  color: #b9c4bf;
+}
+.section--dark .marquee__pause:hover {
+  color: var(--lime);
+}
+
+/* ─────────────────────────────────────────────────────── la carte membre ── */
+
+.member {
+  position: relative;
+  width: 16.5rem;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper-deep);
+  transition:
+    transform 460ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 460ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(7, 16, 18, 0.16);
+}
+
+/* Le filet de signal se dessine en haut de la carte visée. */
+.member::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--lime-deep);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 460ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.member:hover::before {
+  transform: scaleX(1);
+}
+
+.member__portrait {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.member__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Calme au repos, en couleur quand on s'y arrête. */
+  filter: grayscale(1) contrast(1.04);
+  transition:
+    transform 700ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1)),
+    filter 460ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.member:hover .member__portrait img {
+  transform: scale(1.06);
+  filter: none;
+}
+
+/*
+  Sans photo versée : les initiales tiennent la place, jamais un visage emprunté
+  ni une silhouette générique.
+
+  L'aplat passe à l'encre plutôt qu'au papier sombre : sur une section claire,
+  deux tons de papier donnaient des cartes délavées, sans présence. La carte
+  vide devient un objet franc — et le jour où l'admin verse une photo, elle
+  prend toute la place de toute façon.
+*/
+.member__portrait.is-empty {
+  background: var(--ink);
+}
+.member__initials {
+  font: 600 clamp(3rem, 8vw, 4.2rem) / 1 var(--display);
+  color: var(--lime);
+  letter-spacing: -0.04em;
+  transition: transform 620ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.member:hover .member__initials {
+  transform: scale(1.07);
+}
+
+/*
+  La plaque.
+
+  Posée sur le portrait plutôt que rangée dessous : la carte reste un objet
+  unique. Le nom et le rôle sont toujours lisibles ; la bio et le lien montent
+  au survol, sur une transition de `grid-template-rows` — la seule manière
+  d'animer une hauteur inconnue sans la coder en dur.
+*/
+.member__plate {
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0 0;
+  padding: 0.85rem 0.95rem;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.member__plate h3 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  transition: color 300ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.member:hover .member__plate h3 {
+  color: var(--lime-deep);
+}
+.member__role {
+  margin: 0.15rem 0 0;
+  color: var(--lime-deep);
+  font: 500 0.64rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.member__more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 480ms
+    var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.member__more > * {
+  overflow: hidden;
+}
+.member:hover .member__more,
+.member:focus-within .member__more {
+  grid-template-rows: 1fr;
+}
+
+.member__bio {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+.member__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+  padding-block: 0.25rem;
+  color: var(--lime-deep);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.member__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ───────────────────────────────────────────────────── la carte partenaire ── */
+
+.partner {
+  display: grid;
+  place-items: center;
+  width: 12rem;
+  min-height: 6.6rem;
+  padding: 1.3rem;
+  border: 1px solid rgba(244, 245, 237, 0.22);
+  background: var(--night);
+  color: #b9c4bf;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: center;
+  transition:
+    background 320ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1)),
+    border-color 320ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1)),
+    color 320ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.partner:hover {
+  background: var(--ink);
+  border-color: var(--lime);
+  color: var(--paper);
+}
+.partner img {
+  max-height: 2.8rem;
+  width: auto;
+  filter: grayscale(1) brightness(1.7);
+  opacity: 0.75;
+  transition:
+    filter 380ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1)),
+    opacity 380ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.partner:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+/* Le ruban déborde de la coquille : il traverse la page d'un bord à l'autre. */
+.team-section .shell,
+.partners-section .shell {
+  margin-bottom: 2.4rem;
+}
+
+@media (max-width: 600px) {
+  .member {
+    width: 13.5rem;
+  }
+  .partner {
+    width: 10rem;
+  }
+}
+
+/*
+  Mouvement réduit : plus de défilement automatique du tout. Le ruban devient
+  une rangée que la personne fait défiler elle-même — le contenu reste entier,
+  c'est le mouvement imposé qui disparaît.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+    mask-image: none;
+    scrollbar-width: thin;
+  }
+  .marquee__track {
+    animation: none;
+  }
+  .marquee__group[aria-hidden="true"] {
+    display: none;
+  }
+  .marquee__controls {
+    display: none;
+  }
+  .member,
+  .member__portrait img,
+  .member__more,
+  .member::before {
+    transition: none;
+  }
+  .member:hover {
+    transform: none;
+  }
+  .member:hover .member__portrait img {
+    transform: none;
+  }
+}

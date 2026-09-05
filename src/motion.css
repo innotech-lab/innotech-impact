@@ -1,0 +1,499 @@
+/*
+  Couche de mouvement — Innotech Impact
+  ─────────────────────────────────────
+
+  L'idée directrice vient de DESIGN.md : le site est un « chemin de signal »,
+  quelque chose qui se construit, se transmet et s'amplifie. Le mouvement suit ce
+  geste plutôt que d'illustrer chaque section d'une entrée identique :
+
+    rise    — l'élément monte à sa place, comme s'il arrivait par le flux
+    wipe    — un balayage qui découvre le texte ou l'image : le tracé du signal
+    draw    — une ligne qui se dessine depuis son origine
+    lift    — la réponse au survol : l'objet répond, il ne décore pas
+    trace   — le trait qui suit un lien pendant qu'on le vise
+    parallax— la profondeur, réservée à la surface du héros
+
+  Tout est en CSS. Le JavaScript se limite à poser `is-revealed` au bon moment
+  (src/hooks/useScrollReveal.js). Aucune dépendance, aucun octet ajouté au bundle
+  au-delà de ce fichier.
+
+  Le bloc `prefers-reduced-motion` en fin de fichier ne coupe pas les animations
+  au forceps : il retire le déplacement et le balayage tout en gardant les
+  changements d'état visibles — un survol doit rester perceptible même sans
+  mouvement.
+*/
+
+:root {
+  --motion-rise: 26px;
+  --motion-dur: 760ms;
+  --motion-dur-fast: 420ms;
+  --motion-stagger: 85ms;
+  /* Ease-out exponentiel : rapide au départ, long à l'arrivée. Le mouvement se
+     pose au lieu de s'arrêter. --ease-out est déjà défini dans index.css. */
+  --ease-signal: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─────────────────────────────────────────────── révélation au défilement ── */
+
+/*
+  Rien n'est masqué tant que le JavaScript n'a pas confirmé qu'il saura le
+  révéler. `js-reveal` est posé sur <html> par main.jsx avant le premier rendu,
+  et seulement si IntersectionObserver existe.
+
+  Sans ce garde-fou, un script qui ne se charge pas — réseau coupé en cours de
+  route, navigateur ancien, erreur en amont — laisserait la page entière à
+  opacity:0. Le contenu doit survivre à la panne de son animation.
+*/
+
+[data-reveal] {
+  --reveal-i: 0;
+  --reveal-delay: calc(var(--reveal-i) * var(--motion-stagger));
+}
+
+html.js-reveal [data-reveal="rise"],
+html.js-reveal [data-reveal=""] {
+  opacity: 0;
+  transform: translateY(var(--motion-rise));
+  transition:
+    opacity var(--motion-dur) var(--ease-signal) var(--reveal-delay),
+    transform var(--motion-dur) var(--ease-signal) var(--reveal-delay);
+}
+
+/* Le balayage : le contenu est découvert par le bas, comme une ligne qui
+   s'écrit. Réservé aux grands titres et aux médias — sur du texte courant il
+   deviendrait du bruit. */
+html.js-reveal [data-reveal="wipe"] {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(calc(var(--motion-rise) * 0.5));
+  transition:
+    opacity var(--motion-dur-fast) linear var(--reveal-delay),
+    clip-path var(--motion-dur) var(--ease-signal) var(--reveal-delay),
+    transform var(--motion-dur) var(--ease-signal) var(--reveal-delay);
+}
+
+/* La ligne se dessine depuis son point d'ancrage. */
+html.js-reveal [data-reveal="draw"] {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-dur) var(--ease-signal) var(--reveal-delay);
+}
+
+/* Les médias s'ouvrent en se rapprochant très légèrement : la profondeur est
+   suggérée, pas jouée. */
+html.js-reveal [data-reveal="frame"] {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transform: scale(1.04);
+  transition:
+    opacity var(--motion-dur-fast) linear var(--reveal-delay),
+    clip-path var(--motion-dur) var(--ease-signal) var(--reveal-delay),
+    transform calc(var(--motion-dur) * 1.4) var(--ease-signal)
+      var(--reveal-delay);
+}
+
+html.js-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+/* Une cascade : chaque enfant part un cran après le précédent. C'est le signal
+   qui parcourt la liste, pas quatre éléments qui apparaissent ensemble. */
+[data-reveal-stagger] > * {
+  --reveal-i: 0;
+}
+
+/* ───────────────────────────────────────────────────── entrée de la page ── */
+
+/* Le héros n'attend pas le défilement : il joue à l'arrivée, en une séquence
+   unique — c'est le seul moment orchestré du site. */
+@keyframes signal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes signal-wipe {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+@keyframes signal-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes signal-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 7px var(--lime-wash);
+  }
+  50% {
+    box-shadow: 0 0 0 13px transparent;
+  }
+}
+
+.reveal {
+  animation: signal-rise var(--motion-dur) var(--ease-signal) both;
+}
+.reveal--2 {
+  animation-delay: 110ms;
+}
+.reveal--3 {
+  animation-delay: 200ms;
+}
+.reveal--4 {
+  animation-delay: 290ms;
+}
+
+/* Le grand titre du héros se découvre au balayage : c'est la thèse, elle
+   s'écrit. Les autres éléments se contentent de monter. */
+.landing-hero h1,
+.page-hero h1 {
+  animation: signal-wipe calc(var(--motion-dur) * 1.15) var(--ease-signal) 60ms
+    both;
+}
+
+/* Les deux accents du héros respirent une fois installés — le signal reste
+   vivant après l'entrée. */
+.hero-orbit {
+  animation:
+    signal-rise 750ms var(--ease-signal) 450ms both,
+    signal-pulse 4.5s ease-in-out 1.6s infinite;
+}
+.hero-orbit--two {
+  animation-delay: 700ms, 3s;
+}
+
+/* ────────────────────────────────────────────── transition entre routes ── */
+
+/* Un balayage court à chaque changement de page : la navigation devient un
+   déplacement, pas un remplacement brutal. */
+@keyframes route-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.route-shell {
+  animation: route-in 420ms var(--ease-signal) both;
+}
+
+/* ────────────────────────────────────────────── progression de lecture ── */
+
+/* Le signal qui avance dans la page. Piloté par la timeline de défilement, donc
+   sans une ligne de JavaScript. Masqué là où la propriété n'existe pas, plutôt
+   que d'afficher une barre morte à zéro. */
+.scroll-signal {
+  position: fixed;
+  z-index: 90;
+  inset: 0 0 auto 0;
+  height: 2px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--lime-deep), var(--lime));
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-signal {
+    display: block;
+    animation: signal-draw linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+/* ──────────────────────────────────────────────────────────── parallaxe ── */
+
+/* Réservée à la surface du héros, la seule qui porte encore une grande image.
+   Pilotée par la timeline de vue : aucun écouteur de défilement, aucune image
+   qui saute. */
+@supports (animation-timeline: view()) {
+  @keyframes drift {
+    from {
+      transform: translateY(-3%) scale(1.06);
+    }
+    to {
+      transform: translateY(3%) scale(1.06);
+    }
+  }
+
+  .landing-hero__image img {
+    animation: drift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────── au survol ── */
+
+/* Les cartes répondent : l'objet se soulève et son filet s'allume. */
+.pathway,
+.feature,
+.academy-card {
+  transition:
+    transform 420ms var(--ease-signal),
+    box-shadow 420ms var(--ease-signal),
+    background 300ms var(--ease-signal),
+    color 300ms var(--ease-signal);
+}
+
+.pathway:hover,
+.feature:hover,
+.academy-card:hover {
+  transform: translateY(-4px);
+}
+
+.academy-card:hover {
+  box-shadow: 0 18px 38px rgba(7, 16, 18, 0.13);
+}
+
+/* Le trait qui suit un lien : il part du côté visé et se retire du même côté. */
+.text-link {
+  position: relative;
+}
+.text-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.05rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 320ms var(--ease-signal);
+}
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Les lignes de méthode s'allument au passage : la liste devient parcourable. */
+.impact-block__list p,
+.value-list article,
+.service-map__row {
+  transition:
+    color 260ms ease,
+    background 260ms ease;
+}
+.service-map__row:hover {
+  background: var(--lime-pale);
+}
+.impact-block__list p:hover span,
+.value-list article:hover span {
+  color: var(--lime);
+}
+
+/* Les cellules de la bande signal réagissent une à une. */
+.signal-strip li {
+  transition:
+    background 300ms var(--ease-signal),
+    color 300ms var(--ease-signal);
+}
+.signal-strip li:hover {
+  background: var(--lime-deep);
+  color: var(--paper);
+}
+
+/* Le bouton de filtre se remplit depuis le bas quand on le vise. */
+.filterbar button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 260ms var(--ease-signal);
+}
+.filterbar button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 320ms var(--ease-signal);
+}
+.filterbar button:hover:not([aria-pressed="true"]) {
+  color: var(--paper);
+}
+.filterbar button:hover:not([aria-pressed="true"])::before {
+  transform: scaleY(1);
+}
+
+/* Les liens du pied de page avancent d'un cran vers leur flèche. */
+.footer-links a {
+  transition: color 220ms ease;
+}
+.footer-links a:hover {
+  color: var(--lime);
+}
+
+/* ────────────────────────────────────────────────── mouvement réduit ── */
+
+/*
+  On ne coupe pas tout à 0,01 ms : cette recette détruit aussi les retours utiles
+  (un survol qui ne change plus visiblement, un état qui bascule sans que rien
+  ne le signale). On retire ici le déplacement, le balayage et la parallaxe, et
+  on garde les changements de couleur et d'opacité, raccourcis.
+*/
+@media (prefers-reduced-motion: reduce) {
+  /*
+    Scopé comme les règles de masquage. Une media query n'ajoute aucune
+    spécificité : `[data-reveal]` seul (0,2,1 contre 0,1,0) perdrait contre
+    `html.js-reveal [data-reveal="rise"]` et le contenu resterait invisible
+    pour les personnes qui demandent moins de mouvement.
+  */
+  html.js-reveal [data-reveal],
+  html.js-reveal [data-reveal].is-revealed {
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal,
+  .reveal--2,
+  .reveal--3,
+  .reveal--4,
+  .landing-hero h1,
+  .page-hero h1,
+  .hero-orbit,
+  .route-shell,
+  .page-hero__line {
+    animation: none;
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+  }
+
+  .scroll-signal {
+    display: none;
+  }
+
+  .landing-hero__image img {
+    animation: none;
+    transform: none;
+  }
+
+  /* Ce qui reste : les changements d'état, immédiats mais toujours visibles. */
+  .pathway:hover,
+  .feature:hover,
+  .academy-card:hover,
+  .button:hover,
+  .button:active,
+  .nav-cta:hover {
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 120ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────── éclat des boutons ── */
+
+/*
+  Le même geste que sur l'appel à l'action de l'en-tête, étendu à tous les
+  boutons : une bande claire traverse la surface en diagonale, une fois, au
+  survol. C'est le signal qui passe — la version compacte de la ligne qui se
+  dessine sous les titres de page.
+
+  Rien n'est ajouté au balisage : l'éclat vit dans un pseudo-élément, et le
+  `isolation` empêche le z-index négatif de sortir du bouton.
+*/
+.button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    var(--glare, rgba(244, 245, 237, 0.28)),
+    transparent
+  );
+  transform: translateX(-170%) skewX(-18deg);
+  transition: transform 780ms var(--ease-signal);
+  pointer-events: none;
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+  transform: translateX(370%) skewX(-18deg);
+}
+
+/* Sur les boutons clairs, l'éclat doit être sombre pour se voir. */
+.button--lime,
+.button--line:hover {
+  --glare: rgba(7, 16, 18, 0.16);
+}
+
+/* La flèche du bouton part dans sa propre direction. */
+.button svg {
+  transition: transform 340ms var(--ease-signal);
+}
+.button:hover svg {
+  transform: translateX(3px);
+}
+.button--lime:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* Le bouton de formulaire désactivé ne doit rien promettre. */
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.button:disabled::before {
+  display: none;
+}
+.button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button::before,
+  .nav-cta::before {
+    display: none;
+  }
+  .button:hover svg,
+  .button--lime:hover svg {
+    transform: none;
+  }
+}

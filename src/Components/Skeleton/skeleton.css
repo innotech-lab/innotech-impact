@@ -1,0 +1,159 @@
+/*
+  Les états d'attente.
+
+  Le site a une signature : un éclat qui traverse une surface. Sur un bouton il
+  passe une fois, au survol. Ici il repasse — la page cherche encore son signal.
+  C'est le même geste, pas un motif étranger emprunté à une bibliothèque.
+*/
+
+.skeleton {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--paper-deep);
+  border-radius: 0; /* Le site n'a pas d'angles arrondis. */
+}
+
+/* Sur fond nuit, le bloc doit s'éclaircir au lieu de s'assombrir. */
+.section--dark .skeleton,
+.page-hero .skeleton {
+  background: rgba(244, 245, 237, 0.09);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(154, 205, 50, 0.16) 50%,
+    transparent 80%
+  );
+  transform: translateX(-100%);
+  animation: skeleton-signal 1.55s ease-in-out infinite;
+}
+
+@keyframes skeleton-signal {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton--eyebrow {
+  margin-bottom: 1.9rem;
+}
+.skeleton--tight {
+  margin-top: 0.55rem;
+}
+.skeleton--flat {
+  position: absolute;
+  inset: 0;
+}
+
+.skeleton-title {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1.9rem;
+}
+
+/* Le filet du héros, à l'état d'attente : il se dessine puis s'efface. */
+.skeleton-rule {
+  height: 1px;
+  margin-top: 3rem;
+  background: linear-gradient(90deg, var(--lime-deep), transparent);
+  transform-origin: left center;
+  animation: skeleton-rule 1.9s ease-in-out infinite;
+}
+
+@keyframes skeleton-rule {
+  0%,
+  100% {
+    transform: scaleX(0.15);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Les cartes en attente gardent la forme exacte de celles qui arrivent : la
+   page se remplit au lieu de se réorganiser. */
+.skeleton-member {
+  position: relative;
+  background: var(--paper-deep);
+}
+.skeleton-member .member__plate {
+  background: var(--paper);
+}
+.skeleton-partner {
+  border-color: rgba(244, 245, 237, 0.14);
+}
+
+/* ───────────────────────────────────────────────── témoin d'envoi ── */
+
+/*
+  Dans le bouton, pendant l'envoi d'un formulaire. Un arc qui tourne : la seule
+  forme qui dit « en cours » sans annoncer une durée qu'on ne connaît pas. Une
+  barre de progression mentirait.
+*/
+.spinner {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 0.5em;
+  vertical-align: -0.08em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  opacity: 0.85;
+  animation: spinner-turn 700ms linear infinite;
+}
+
+@keyframes spinner-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─────────────────────────────────────────── arrivée des images ── */
+
+/*
+  Une image qui se décode apparaît d'un coup, en plein milieu d'une lecture.
+  Un fondu court la fait arriver au lieu de surgir. Le conteneur porte déjà le
+  rapport d'image, donc rien ne se décale.
+
+  Le visuel du héros en est exclu : c'est le plus grand élément peint de la
+  page, et retarder sa révélation retarderait la mesure de vitesse perçue.
+*/
+img[data-fade] {
+  opacity: 0;
+  transition: opacity 520ms var(--ease-signal, cubic-bezier(0.16, 1, 0.3, 1));
+}
+img[data-fade][data-loaded] {
+  opacity: 1;
+}
+
+/*
+  Mouvement réduit : les blocs restent, l'éclat et la rotation disparaissent.
+  L'attente doit rester lisible — c'est le mouvement continu qu'on retire, pas
+  l'information « ça charge ».
+*/
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after,
+  .skeleton-rule {
+    animation: none;
+  }
+  .skeleton-rule {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  .spinner {
+    animation-duration: 1.8s;
+  }
+  img[data-fade] {
+    opacity: 1;
+    transition: none;
+  }
+}

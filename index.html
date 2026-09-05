@@ -1,10 +1,66 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png+xml" href="/TECH.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Innotech</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!--
+      Les polices sont chargées ici, et non par un @import dans index.css :
+      un @import place fonts.googleapis.com derrière le CSS, ce qui crée une
+      cascade HTML → CSS → googleapis → gstatic avant le premier texte.
+      Graisses réduites à celles réellement utilisées (relevé sur les fichiers CSS).
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600&display=swap"
+    />
+
+    <title>Innotech Impact — Logiciels & STEM au Burundi</title>
+    <meta
+      name="description"
+      content="Innotech Impact conçoit des solutions logicielles et développe des expériences d’apprentissage STEM au Burundi."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Innotech Impact" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta
+      property="og:title"
+      content="Innotech Impact — Logiciels & STEM au Burundi"
+    />
+    <meta
+      property="og:description"
+      content="Innotech Impact conçoit des solutions logicielles et développe des expériences d’apprentissage STEM au Burundi."
+    />
+    <meta property="og:image" content="/apple-touch-icon.png" />
+    <meta name="twitter:card" content="summary" />
+    <!--
+      Balisage structuré : dit aux moteurs qu'Innotech Impact est une
+      organisation réelle, située, joignable. Aucune affirmation qui ne soit
+      déjà sur le site.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Innotech Impact",
+        "description": "Studio de développement logiciel et d\u2019apprentissages STEM.",
+        "email": "innotech@kit-hub.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "N\u00b0 7, Av. Rweru, Kabondo",
+          "addressLocality": "Mukaza, Bujumbura",
+          "addressCountry": "BI"
+        },
+        "knowsLanguage": "fr",
+        "areaServed": { "@type": "Country", "name": "Burundi" }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
