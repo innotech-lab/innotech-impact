@@ -58,6 +58,12 @@ export default function Footer() {
             <Link to="/about">
               {t("Notre impact")} <ArrowRight />
             </Link>
+            <Link to="/blog">
+              {t("Journal")} <ArrowRight />
+            </Link>
+            <Link to="/contact">
+              {t("Contact")} <ArrowRight />
+            </Link>
           </div>
         </div>
         <div>

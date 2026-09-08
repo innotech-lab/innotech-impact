@@ -437,4 +437,117 @@ export const en = {
     "Site publisher, data collected by Innotech Impact’s forms, and how to ask for it to be corrected or deleted.",
   "Cette page n’existe pas ou a été déplacée. Retrouvez les solutions logicielles et la STEM Academy d’Innotech Impact.":
     "This page doesn’t exist or has moved. Find Innotech Impact’s software solutions and STEM Academy.",
+
+  // ─────────────────────────────────────────────────────────── nouvelles pages ──
+  "Qui sommes-nous": "Who we are",
+  "À propos": "About",
+  Projets: "Projects",
+  "Un studio qui construit et transmet.": "A studio that builds and passes knowledge on.",
+  "Innotech Impact est une entreprise technologique burundaise. Nous concevons des logiciels utiles pour les organisations et nous transmettons les compétences qui permettent à davantage de personnes de prendre part au numérique.":
+    "Innotech Impact is a Burundian technology company. We build useful software for organisations and share the skills that help more people take part in the digital world.",
+  "Découvrir notre histoire": "Discover our story",
+  "Nos services": "Our services",
+  "Historique": "History",
+  "Une histoire née du terrain.": "A story born from the ground.",
+  "Innotech Impact s’est construit autour d’un constat simple : les organisations ont besoin d’outils qui leur ressemblent, et les talents ont besoin d’espaces pour apprendre en pratiquant.":
+    "Innotech Impact grew from a simple observation: organisations need tools that fit them, and talent needs spaces to learn by doing.",
+  "Le point de départ": "The starting point",
+  "Écouter les besoins réels des organisations et des communautés.":
+    "Listening to the real needs of organisations and communities.",
+  "La pratique": "Practice",
+  "Transformer ces besoins en projets numériques compréhensibles et utiles.":
+    "Turning those needs into understandable and useful digital projects.",
+  "Aujourd’hui": "Today",
+  "Relier développement logiciel, transmission et impact local dans une même équipe.":
+    "Connecting software development, knowledge sharing and local impact in one team.",
+  "Notre vision : un numérique comme": "Our vision: technology as",
+  " pour les organisations et les personnes.": " for organisations and people.",
+  "Vision": "Vision",
+  "Un Burundi où la technologie est comprise, appropriée et mise au service des besoins locaux.":
+    "A Burundi where technology is understood, owned and put to work for local needs.",
+  "Mission": "Mission",
+  "Créer des solutions digitales solides et ouvrir des chemins d’apprentissage accessibles.":
+    "Create solid digital solutions and open accessible paths to learning.",
+  "Nos valeurs": "Our values",
+  "Développement de logiciels et applications": "Software and application development",
+  "Des outils numériques conçus autour de vos usages, de vos équipes et de la réalité de votre activité.":
+    "Digital tools designed around your usage, your teams and the reality of your work.",
+  "Applications web": "Web applications",
+  "Applications mobiles": "Mobile applications",
+  "Outils métiers": "Business tools",
+  "Création de sites web": "Website creation",
+  "Des sites clairs, rapides et faciles à faire évoluer pour présenter votre organisation et vos projets.":
+    "Clear, fast and easy-to-evolve websites to present your organisation and projects.",
+  "Site vitrine": "Showcase website",
+  "Plateforme institutionnelle": "Institutional platform",
+  "Refonte et maintenance": "Redesign and maintenance",
+  "Formation informatique": "Computer training",
+  "Des parcours progressifs pour apprendre les fondamentaux, programmer et découvrir les nouveaux usages de l’intelligence artificielle.":
+    "Step-by-step tracks to learn the fundamentals, program and discover new uses of artificial intelligence.",
+  "Informatique de base": "Computer basics",
+  "Programmation": "Programming",
+  "Intelligence artificielle": "Artificial intelligence",
+  "Notre travail en images": "Our work in images",
+  "Chaque projet présenté ici met en avant un contexte, une idée et une direction de travail. Les détails de collaboration et les résultats sont à compléter avec les preuves validées par l’équipe.":
+    "Each project shown here highlights a context, an idea and a direction of work. Collaboration details and results still need to be completed with evidence validated by the team.",
+  "Web": "Web",
+  "Nouveaux usages": "New uses",
+  "Données & outils numériques": "Data and digital tools",
+  "Découvrir les données, les organiser et utiliser les outils numériques pour mieux décider.":
+    "Discover data, organise it and use digital tools to make better decisions.",
+  "Une porte d’entrée vers la rigueur des modèles, les tableaux de bord et les questions que les données permettent de poser.":
+    "An introduction to model discipline, dashboards and the questions data lets us ask.",
+  "Réseaux & cybersécurité": "Networks and cybersecurity",
+  "Comprendre les connexions, les protocoles et les réflexes qui rendent les usages numériques plus sûrs.":
+    "Understand connections, protocols and the habits that make digital use safer.",
+  "Une introduction à l’infrastructure et aux pratiques de sécurité qui protègent les personnes et les organisations.":
+    "An introduction to the infrastructure and security practices that protect people and organisations.",
+  "Parler d’intelligence artificielle avec méthode": "Talking about artificial intelligence with method",
+  "À la une": "Featured",
+  "Nos dernières idées": "Our latest ideas",
+  "Des réflexions courtes sur les produits numériques, la transmission et les usages responsables de la technologie.":
+    "Short reflections on digital products, knowledge sharing and responsible uses of technology.",
+  "Le journal Innotech": "The Innotech journal",
+  "Construire, transmettre, regarder ce qui vient.": "Build, share, look at what comes next.",
+  "Des articles courts pour partager notre manière de travailler et ouvrir des conversations autour du numérique.":
+    "Short articles about how we work and conversations around the digital world.",
+  "Un logiciel utile commence par le contexte": "Useful software starts with context",
+  "Avant les écrans et les fonctionnalités, il y a les personnes, les contraintes et la question à résoudre. Voici notre manière de commencer un projet numérique.":
+    "Before screens and features, there are people, constraints and the question to solve. This is how we start a digital project.",
+  "Méthode": "Method",
+  "L’équipe Innotech": "The Innotech team",
+  "Post récent": "Recent post",
+  "Produit numérique": "Digital product",
+  "Terrain": "Ground",
+  "Apprendre en construisant : pourquoi la pratique compte":
+    "Learn by building: why practice matters",
+  "Un parcours de formation devient plus concret quand chaque notion mène vers une expérience, un prototype ou une question nouvelle.":
+    "A training path becomes more concrete when each idea leads to an experience, a prototype or a new question.",
+  "À découvrir": "Worth discovering",
+  "Découvrir l’IA, c’est aussi apprendre à vérifier une réponse, protéger ses informations et reconnaître les limites d’un outil.":
+    "Discovering AI also means learning to check an answer, protect your information and recognise a tool’s limits.",
+  "Usages responsables": "Responsible uses",
+  "Numérique": "Digital",
+  "Faire grandir un projet avec les équipes qui le porteront":
+    "Growing a project with the teams who will carry it",
+  "Un outil s’installe mieux quand les personnes concernées participent aux choix, comprennent les étapes et peuvent continuer à le faire évoluer.":
+    "A tool settles in better when the people concerned help choose, understand the steps and can keep evolving it.",
+  "Collaboration": "Collaboration",
+  "Équipes": "Teams",
+  "Conception": "Design",
+  "Lire l’article": "Read the article",
+  "Parlons de votre besoin": "Let’s talk about your need",
+  "Une première conversation pour choisir la bonne direction.":
+    "A first conversation to choose the right direction.",
+  "Décrire mon besoin": "Describe my need",
+  "Article récent précédent": "Previous recent article",
+  "Article récent suivant": "Next recent article",
+  "Utilisez les flèches ou les touches ← →":
+    "Use the arrows or the ← → keys",
+  "Une idée à découvrir, une conversation à ouvrir.":
+    "An idea to discover, a conversation to open.",
+  "Fais défiler les publications récentes et découvre les sujets qui nourrissent notre manière de construire.":
+    "Browse recent posts and discover the subjects that shape how we build.",
+  "Autres articles": "More articles",
+  "Lire la suite": "Read on",
 };

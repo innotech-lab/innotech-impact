@@ -6,10 +6,13 @@ import { useT } from "../../i18n";
 import "./navbar.css";
 
 const links = [
-  ["/services", "Solutions"],
-  ["/projects", "Réalisations"],
-  ["/formation", "STEM Academy"],
-  ["/about", "Notre impact"],
+  ["/", "Accueil"],
+  ["/about", "À propos"],
+  ["/services", "Services"],
+  ["/projects", "Projets"],
+  ["/formation", "Formations"],
+  ["/contact", "Contact"],
+  ["/blog", "Blog"],
 ];
 
 /**
@@ -78,6 +81,7 @@ export default function Navbar() {
             <NavLink
               key={to}
               to={to}
+              end={to === "/"}
               onClick={() => setOpen(false)}
               className="nav-link"
             >

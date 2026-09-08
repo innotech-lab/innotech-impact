@@ -7,6 +7,7 @@ import comlb from "../../assets/comlb.webp";
 import women from "../../assets/Women.webp";
 import PageMeta from "../../Components/PageMeta/PageMeta";
 import ProjectIndex from "../../Components/ProjectIndex/ProjectIndex";
+import { PartnersSection } from "../../Components/Team/Team";
 import { useT } from "../../i18n";
 const data = [
   {
@@ -53,11 +54,11 @@ export default function Projects() {
         <div className="shell">
           <p className="eyebrow reveal">{t("Réalisations")}</p>
           <h1 className="reveal reveal--2">
-            {t("Des pistes de travail pour des enjeux qui comptent.")}
+            {t("Des systèmes qui font avancer les personnes qui les utilisent.")}
           </h1>
           <p className="reveal reveal--3">
             {t(
-              "Voici les initiatives et produits présentés dans le site. Les résultats et collaborations sont à compléter avec les preuves validées avant publication.",
+              "Nous sommes fiers d’accompagner plusieurs entreprises et organisations dans leurs projets numériques.",
             )}
           </p>
           <div className="page-hero__line" />
@@ -100,6 +101,17 @@ export default function Projects() {
           </div>
         </div>
       </section>
+      <section className="section projects-statement">
+        <div className="shell projects-statement__grid">
+          <p className="eyebrow">{t("Notre travail en images")}</p>
+          <p>
+            {t(
+              "Chaque projet présenté ici met en avant un contexte, une idée et une direction de travail. Les détails de collaboration et les résultats sont à compléter avec les preuves validées par l’équipe.",
+            )}
+          </p>
+        </div>
+      </section>
+      <PartnersSection />
       <section className="section section--dark">
         <div data-reveal="rise" className="shell section-head">
           <div>

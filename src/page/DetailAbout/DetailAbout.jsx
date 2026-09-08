@@ -45,14 +45,53 @@ export default function DetailAbout() {
           <div className="page-hero__line" />
         </div>
       </section>
+      <section className="section about-history">
+        <div className="shell">
+          <div data-reveal="rise" className="section-head">
+            <div>
+              <p className="eyebrow">{t("Historique")}</p>
+              <h2>{t("Une histoire née du terrain.")}</h2>
+            </div>
+            <p className="section-copy">
+              {t(
+                "Innotech Impact s’est construit autour d’un constat simple : les organisations ont besoin d’outils qui leur ressemblent, et les talents ont besoin d’espaces pour apprendre en pratiquant.",
+              )}
+            </p>
+          </div>
+          <div data-reveal="rise" data-reveal-stagger className="history-list">
+            <article>
+              <span>{t("Le point de départ")}</span>
+              <p>{t("Écouter les besoins réels des organisations et des communautés.")}</p>
+            </article>
+            <article>
+              <span>{t("La pratique")}</span>
+              <p>{t("Transformer ces besoins en projets numériques compréhensibles et utiles.")}</p>
+            </article>
+            <article>
+              <span>{t("Aujourd’hui")}</span>
+              <p>{t("Relier développement logiciel, transmission et impact local dans une même équipe.")}</p>
+            </article>
+          </div>
+        </div>
+      </section>
       <section className="section">
         <div data-reveal="rise" className="shell story-grid">
           <div className="story-statement">
-            {t("Nous voulons que le numérique soit un")}{" "}
+            {t("Notre vision : un numérique comme")}{" "}
             <em>{t("levier d’action")}</em>
-            {t(", pas une promesse distante.")}
+            {t(" pour les organisations et les personnes.")}
           </div>
           <div className="story-body">
+            <div className="about-pillars">
+              <article>
+                <span>{t("Vision")}</span>
+                <p>{t("Un Burundi où la technologie est comprise, appropriée et mise au service des besoins locaux.")}</p>
+              </article>
+              <article>
+                <span>{t("Mission")}</span>
+                <p>{t("Créer des solutions digitales solides et ouvrir des chemins d’apprentissage accessibles.")}</p>
+              </article>
+            </div>
             <p>
               {t(
                 "Notre travail se situe à l’endroit où un besoin d’organisation rencontre une envie d’apprendre. Nous aidons les équipes à rendre leur activité plus simple avec la technologie et nous créons des espaces où les talents peuvent comprendre, expérimenter et construire.",
@@ -64,6 +103,7 @@ export default function DetailAbout() {
               )}
             </p>
             <div data-reveal="rise" data-reveal-stagger className="value-list">
+              <p className="value-list__label">{t("Nos valeurs")}</p>
               {values.map(([n, title, desc]) => (
                 <article key={n}>
                   <span>{n}</span>
